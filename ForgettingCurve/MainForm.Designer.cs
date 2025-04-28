@@ -30,45 +30,151 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.newFile = new System.Windows.Forms.Button();
+            this.NoNamedLine = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.FileOpen_Button = new System.Windows.Forms.Button();
-            this.NoNamedLine = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.mainPanel);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.newFile);
             this.panel1.Controls.Add(this.NoNamedLine);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.FileOpen_Button);
-            this.panel1.Location = new System.Drawing.Point(0, 59);
+            this.panel1.Location = new System.Drawing.Point(0, 88);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1270, 625);
+            this.panel1.Size = new System.Drawing.Size(1814, 938);
             this.panel1.TabIndex = 0;
+            // 
+            // button5
+            // 
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("나눔바른고딕OTF", 12F, System.Drawing.FontStyle.Bold);
+            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(33, 280);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Name = "button5";
+            this.button5.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.button5.Size = new System.Drawing.Size(227, 51);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "        캘린더";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("나눔바른고딕OTF", 12F, System.Drawing.FontStyle.Bold);
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(33, 148);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Name = "button4";
+            this.button4.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.button4.Size = new System.Drawing.Size(227, 51);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "        HOME";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("나눔바른고딕OTF", 10F);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(40, 102);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 23);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "일반";
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.mainPanel.Location = new System.Drawing.Point(289, 93);
+            this.mainPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1500, 822);
+            this.mainPanel.TabIndex = 8;
+            // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("나눔바른고딕OTF", 12F, System.Drawing.FontStyle.Bold);
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(33, 496);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.button3.Size = new System.Drawing.Size(227, 51);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "        휴지통";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // newFile
+            // 
+            this.newFile.FlatAppearance.BorderSize = 0;
+            this.newFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newFile.Font = new System.Drawing.Font("나눔바른고딕OTF", 12F, System.Drawing.FontStyle.Bold);
+            this.newFile.Image = ((System.Drawing.Image)(resources.GetObject("newFile.Image")));
+            this.newFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.newFile.Location = new System.Drawing.Point(33, 334);
+            this.newFile.Margin = new System.Windows.Forms.Padding(4);
+            this.newFile.Name = "newFile";
+            this.newFile.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.newFile.Size = new System.Drawing.Size(227, 51);
+            this.newFile.TabIndex = 6;
+            this.newFile.Text = "        새로 만들기";
+            this.newFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.newFile.UseVisualStyleBackColor = true;
+            this.newFile.Click += new System.EventHandler(this.newFile_Click);
+            // 
+            // NoNamedLine
+            // 
+            this.NoNamedLine.AutoSize = true;
+            this.NoNamedLine.Font = new System.Drawing.Font("나눔바른고딕OTF", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.NoNamedLine.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.NoNamedLine.Location = new System.Drawing.Point(20, 195);
+            this.NoNamedLine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NoNamedLine.Name = "NoNamedLine";
+            this.NoNamedLine.Size = new System.Drawing.Size(285, 26);
+            this.NoNamedLine.TabIndex = 5;
+            this.NoNamedLine.Text = "─────────────";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("나눔바른고딕OTF", 10F);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(28, 156);
+            this.label1.Location = new System.Drawing.Point(40, 234);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 16);
+            this.label1.Size = new System.Drawing.Size(46, 23);
             this.label1.TabIndex = 4;
             this.label1.Text = "파일";
             // 
@@ -79,10 +185,11 @@
             this.button2.Font = new System.Drawing.Font("나눔바른고딕OTF", 12F, System.Drawing.FontStyle.Bold);
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(23, 257);
+            this.button2.Location = new System.Drawing.Point(33, 442);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.button2.Size = new System.Drawing.Size(159, 34);
+            this.button2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.button2.Size = new System.Drawing.Size(227, 51);
             this.button2.TabIndex = 3;
             this.button2.Text = "        공유";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -95,120 +202,52 @@
             this.FileOpen_Button.Font = new System.Drawing.Font("나눔바른고딕OTF", 12F, System.Drawing.FontStyle.Bold);
             this.FileOpen_Button.Image = ((System.Drawing.Image)(resources.GetObject("FileOpen_Button.Image")));
             this.FileOpen_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FileOpen_Button.Location = new System.Drawing.Point(23, 222);
+            this.FileOpen_Button.Location = new System.Drawing.Point(33, 388);
+            this.FileOpen_Button.Margin = new System.Windows.Forms.Padding(4);
             this.FileOpen_Button.Name = "FileOpen_Button";
-            this.FileOpen_Button.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.FileOpen_Button.Size = new System.Drawing.Size(159, 34);
+            this.FileOpen_Button.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.FileOpen_Button.Size = new System.Drawing.Size(227, 51);
             this.FileOpen_Button.TabIndex = 2;
             this.FileOpen_Button.Text = "        내 파일";
             this.FileOpen_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.FileOpen_Button.UseVisualStyleBackColor = true;
             // 
-            // NoNamedLine
+            // button6
             // 
-            this.NoNamedLine.AutoSize = true;
-            this.NoNamedLine.Font = new System.Drawing.Font("나눔바른고딕OTF", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.NoNamedLine.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.NoNamedLine.Location = new System.Drawing.Point(14, 130);
-            this.NoNamedLine.Name = "NoNamedLine";
-            this.NoNamedLine.Size = new System.Drawing.Size(177, 17);
-            this.NoNamedLine.TabIndex = 5;
-            this.NoNamedLine.Text = "─────────────";
+            this.button6.Font = new System.Drawing.Font("굴림", 8F);
+            this.button6.Location = new System.Drawing.Point(1734, 18);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(55, 52);
+            this.button6.TabIndex = 12;
+            this.button6.Text = "유저";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("나눔바른고딕OTF", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(23, 187);
+            this.button1.Font = new System.Drawing.Font("굴림", 8F);
+            this.button1.Location = new System.Drawing.Point(1673, 18);
             this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.button1.Size = new System.Drawing.Size(159, 34);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "        새로 만들기";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Size = new System.Drawing.Size(55, 52);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "설정";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("나눔바른고딕OTF", 12F, System.Drawing.FontStyle.Bold);
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(23, 292);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.button3.Size = new System.Drawing.Size(159, 34);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "        휴지통";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("나눔바른고딕OTF", 10F);
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(28, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 16);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "일반";
-            // 
-            // button4
-            // 
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("나눔바른고딕OTF", 12F, System.Drawing.FontStyle.Bold);
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(23, 99);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.button4.Size = new System.Drawing.Size(159, 34);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "        HOME";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("나눔바른고딕OTF", 44.99999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1050, 548);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "내용";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(202, 62);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1050, 548);
-            this.panel2.TabIndex = 8;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1806, 1022);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "망각 곡선";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -220,11 +259,13 @@
         private System.Windows.Forms.Button FileOpen_Button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label NoNamedLine;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button newFile;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button1;
     }
 }
