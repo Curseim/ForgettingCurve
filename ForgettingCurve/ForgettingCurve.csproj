@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\ContributionsCalender.cs">
+    <Compile Include="Control\ContributionsCalender\ContributionsCalender.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Control\ContributionsCalender.Designer.cs">
+    <Compile Include="Control\ContributionsCalender\ContributionsCalender.Designer.cs">
       <DependentUpon>ContributionsCalender.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileEditor.cs">
+    <Compile Include="Control\FileEditor\FileEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FileEditor.Designer.cs">
+    <Compile Include="Control\FileEditor\FileEditor.Designer.cs">
       <DependentUpon>FileEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -66,10 +66,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Control\ContributionsCalender.resx">
+    <EmbeddedResource Include="Control\ContributionsCalender\ContributionsCalender.resx">
       <DependentUpon>ContributionsCalender.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FileEditor.resx">
+    <EmbeddedResource Include="Control\FileEditor\FileEditor.resx">
       <DependentUpon>FileEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
