@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ForgettingCurve.Test;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,11 @@ namespace ForgettingCurve
             if (Environment.OSVersion.Version.Major >= 6) {
                 SetProcessDPIAware();
             }
-            Application.Run(new MainForm());
+            #if TEST
+                Application.Run(new TestForm());
+            #else
+                Application.Run(new MainForm());
+            #endif
         }
 
         // 윈도우 폼 DPI를 직접 설정
