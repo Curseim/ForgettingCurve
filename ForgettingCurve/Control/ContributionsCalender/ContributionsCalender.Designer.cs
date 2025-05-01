@@ -28,19 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label_Sunday = new System.Windows.Forms.Label();
+            this.label_Saturday = new System.Windows.Forms.Label();
+            this.label_Wednesday = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // label_Sunday
+            // 
+            this.label_Sunday.AutoSize = true;
+            this.label_Sunday.Font = new System.Drawing.Font("굴림", 7F);
+            this.label_Sunday.Location = new System.Drawing.Point(3, 0);
+            this.label_Sunday.Name = "label_Sunday";
+            this.label_Sunday.Size = new System.Drawing.Size(21, 14);
+            this.label_Sunday.TabIndex = 0;
+            this.label_Sunday.Text = "일";
+            // 
+            // label_Saturday
+            // 
+            this.label_Saturday.AutoSize = true;
+            this.label_Saturday.Font = new System.Drawing.Font("굴림", 7F);
+            this.label_Saturday.Location = new System.Drawing.Point(3, 129);
+            this.label_Saturday.Name = "label_Saturday";
+            this.label_Saturday.Size = new System.Drawing.Size(21, 14);
+            this.label_Saturday.TabIndex = 1;
+            this.label_Saturday.Text = "토";
+            // 
+            // label_Wednesday
+            // 
+            this.label_Wednesday.AutoSize = true;
+            this.label_Wednesday.Font = new System.Drawing.Font("굴림", 7F);
+            this.label_Wednesday.Location = new System.Drawing.Point(3, 61);
+            this.label_Wednesday.Name = "label_Wednesday";
+            this.label_Wednesday.Size = new System.Drawing.Size(21, 14);
+            this.label_Wednesday.TabIndex = 2;
+            this.label_Wednesday.Text = "수";
             // 
             // ContributionsCalender
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.label_Wednesday);
+            this.Controls.Add(this.label_Saturday);
+            this.Controls.Add(this.label_Sunday);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ContributionsCalender";
-            this.Size = new System.Drawing.Size(100, 100);
+            this.Size = new System.Drawing.Size(1112, 147);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label_Sunday;
+        private System.Windows.Forms.Label label_Saturday;
+        private System.Windows.Forms.Label label_Wednesday;
     }
 }

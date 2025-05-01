@@ -1,115 +1,358 @@
-﻿using System;
+﻿using ForgettingCurve.Control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ForgettingCurve.Control
 {
+
     public partial class ContributionsCalender : UserControl
     {
 
-        private List<Button> _buttons;
-        private int _year;
-        private int[][] _monthDayArray;
-        private int[] _daysEachMonth;
-        private bool _isLeapYear;
 
 
-        public ContributionsCalender(int _p_year)
+
+        private List<Button> _buttonList;
+        private List<int> _contribCountList;
+
+        private double _avrgContribCount = 0;
+        private int _ValidcontribCount = 0;
+
+
+        private DateTime _dateTime;
+
+        private object _selectedButtonTag= null;
+
+
+
+        public event EventHandler<DateClickedEventArgs> DateClicked;
+        public event EventHandler<DateMouseHoveredEventArgs> DateMouseHovered;
+
+
+
+        public ContributionsCalender(int p_year = 2025)
         {
             InitializeComponent();
 
 
+            _dateTime = new DateTime(p_year, 1, 1);
 
-
-            this._year = _p_year;
-
-            _buttons = new List<Button>();
-
-            _monthDayArray = new int[12][];
-
-            // 월별 일수 배열 선언.
-            _daysEachMonth = new int[12];
+            this._buttonList = new List<Button>();
+            this._contribCountList = new List<int>();
 
 
 
+            Init_DateList(_dateTime.Year, _contribCountList);
+            Init_ButtonList();
+        }
 
-            // 월별 일수 배열에 값 대입.
-            Set_DaysEachMonth(_year, _daysEachMonth);
 
-            for (int i = 0; i < 12; i++)
+        public int Add_ContributionCount(DateTime p_dateTime, uint p_count = 1)
+        {
+            int _btnIdx;
+
+
+            _btnIdx = Get_ButtonIdx(p_dateTime);
+
+            int _r, _g, _b;
+
+            _r = _buttonList[_btnIdx].BackColor.R;
+            _g = _buttonList[_btnIdx].BackColor.G;
+            _b = _buttonList[_btnIdx].BackColor.B;
+
+            for (int i = 0; i < p_count; i++)
             {
-      //          _monthDayArray[i] = new int[i][];
-        //        for (int j = 0; j < _daysEachMonth[i]; j++)
+                _r -= 15;
+                _g -= 6;
+                _b -= 20;
+
+                if (_r < 0 || _b < 0 || _b < 0)
+                {
+                    _r += 15;
+                    _g += 6;
+                    _b += 20;
+                }
             }
 
+            _buttonList[_btnIdx].BackColor = Color.FromArgb(_r, _g, _b);
+
+            if (_contribCountList[_btnIdx] == 0)
+                _ValidcontribCount++;
+
+            _contribCountList[_btnIdx] += (int)p_count;
+            this._avrgContribCount += (double)p_count;
+   //         Set_ButtonColor(_buttonList[_btnIdx], _contribCountList[_btnIdx]);
+            return 1;
+        }
+
+        public int Get_ContributionCount(DateTime p_dateTime)
+        {
+            return _contribCountList[Get_ButtonIdx(p_dateTime)];
+        }
 
 
 
 
 
-            
+        // 윤년 판별.
+        private static bool Is_LeapYear(int _year)
+        {
+            if (_year % 400 == 0 || (_year % 4 == 0 && _year % 100 != 0))
+                return true;
+            else
+                return false;
+        }
 
 
+        
 
+        // 날짜 리스트 채우기.
+        private static void Init_DateList(int _year, List<int> _dateList)
+        {
+            int _dayCount = 365;
+            if (Is_LeapYear(_year))
+                _dayCount = 366;
 
-            for (int i = 0; i < 52; i++)
+            for (int i  = 0; i < _dayCount; i++)
             {
-                for (int j = 0; j < 7; j++)
+                _dateList.Add(0);
+
+            }
+
+            //for (int _month = 1; _month <= 12; _month++)
+            //{
+            //    list<int> _temp = new list<int>();
+
+            //    switch (_month)
+            //    {
+            //        case 1:
+            //        case 3:
+            //        case 5:
+            //        case 7:
+            //        case 8:
+            //        case 10:
+            //        case 12:
+            //            for (int i = 0; i < 31; i++)
+            //                _temp.add(0);
+            //            break;
+
+
+            //        case 4:
+            //        case 6:
+            //        case 9:
+            //        case 11:
+            //            for (int i = 0; i < 30; i++)
+            //                _temp.add(0);
+            //            break;
+
+
+            //        case 2:
+            //            for (int i = 0; i < 28; i++)
+            //                _temp.add(0);
+            //            if (is_leapyear(_year))
+            //                _temp.add(0);
+            //            break;
+            //    }
+
+            //    _datelist.add(_temp);
+
+            //}
+
+        }
+
+
+
+
+        private void Init_ButtonList()
+        {
+            int _x_Shift = 0;
+            int _y_Shift = 0;
+            int _widthButton = 20;
+            int _heightButton = 20;
+            int _margButton = 1;
+            int _padButton = 1;
+
+            _y_Shift++;
+
+            label_Sunday.Location = new Point(_x_Shift, (_heightButton + (_margButton * 2)) * (0 + _y_Shift));
+            label_Wednesday.Location = new Point(_x_Shift, (_heightButton + (_margButton * 2)) * (3 + _y_Shift));
+            label_Saturday.Location = new Point(_x_Shift, (_heightButton + (_margButton * 2)) * (6 + _y_Shift));
+            _x_Shift++;
+
+
+            for (int month = 1; month <= 12; month++)
+            {
+
+                System.Windows.Forms.Label _label = new System.Windows.Forms.Label();
+
+                _label.Location = new Point(_x_Shift * (_widthButton + _margButton), _y_Shift - 1);
+                _label.Size = new Size(_widthButton * 2, _heightButton);
+  //              _label.Font = new Font(_label.Font.Name, 7);
+                _label.Text = month.ToString();
+                this.Controls.Add(_label);
+
+
+
+
+                for (int day = 1; day <= DateTime.DaysInMonth(_dateTime.Year, month); day++)
                 {
-                    var _btn = new Button();
-                    // 위치·크기 설정…
-                    _btn.Size = new Size(20, 20);
-                    _btn.Location = new Point(i * (21 + 0), j * (21 + 0));
-                    this.Controls.Add(_btn);
-                    _buttons.Add(_btn);        // 리스트에도 추가
-                                               // Flat 스타일 적용
-                    _btn.FlatStyle = FlatStyle.Popup;
-                    // 테두리 제거
-                    _btn.FlatAppearance.BorderSize = 0;
-                    // BackColor가 제대로 반영되도록
-                    _btn.UseVisualStyleBackColor = false;
+                    Button _button = new Button();
 
+                    _dateTime = new DateTime(_dateTime.Year, month, day);
 
-                    // 여백 없이 딱 맞게
-                    _btn.Margin = new Padding(1);
-                    _btn.Padding = new Padding(1);
+                    _button.FlatStyle = FlatStyle.Popup;
+                    _button.FlatAppearance.BorderSize = 0;
+                    _button.UseVisualStyleBackColor = false;
 
+                    _button.Size = new Size(_widthButton, _heightButton);
+                    _button.Margin = new Padding(_margButton);
+                    _button.Padding = new Padding(_padButton);
+                    _button.Location = new Point(_x_Shift * (_button.Size.Width + 1), ((int)_dateTime.DayOfWeek + _y_Shift) * (_button.Size.Height + 1));
+
+                    _button.Tag = new Button().Tag = (_dateTime);
+                    _button.Click += Button_Click;
+                    _button.MouseHover += Button_MouseHover;
+
+           //         _button.Click += (s, e) => {
+           //             var dt = (DateTime)((Button)s).Tag;
+           //            MessageBox.Show($"선택된 날짜: {dt:yyyy-MM-dd}");
+           //                DateClicked?.Invoke(this, new DateClickedEventArgs(_dateTime));
+           //
+           //              };
+
+                    this.Controls.Add(_button);
+                    this._buttonList.Add(_button);
+
+                    if (_dateTime.DayOfWeek == DayOfWeek.Saturday)
+                        _x_Shift++;
                 }
 
             }
 
+
+            this.Size = new Size((_buttonList[0].Width + _margButton) * (_x_Shift + 1), (_buttonList[0].Height + _margButton) * (7 + _y_Shift));
         }
 
 
-
-
-        // 월별 일수 배열에 값 대입.
-        private static void Set_DaysEachMonth(int _year, int[] _daysEachMonth)
+        private void Button_Click(object sender, EventArgs e)
         {
-            _daysEachMonth[1] = 31;
-            _daysEachMonth[2] = 28;
-            _daysEachMonth[3] = 31;
-            _daysEachMonth[4] = 30;
-            _daysEachMonth[5] = 31;
-            _daysEachMonth[6] = 30;
-            _daysEachMonth[7] = 31;
-            _daysEachMonth[8] = 31;
-            _daysEachMonth[9] = 30;
-            _daysEachMonth[10] = 31;
-            _daysEachMonth[11] = 30;
-            _daysEachMonth[12] = 31;
+            var _button = sender as Button;
+            if (_button == null) return;
+            var dateInfo = (DateTime)_button.Tag;
 
-            // 윤년 판별.
-            if (_year % 400 == 0 || (_year % 4 != 0 && _year % 100 != 0))
-                _daysEachMonth[2] = 29;
+            //          ButtonDateComparer comparer = new ButtonDateComparer();
+            //         _buttonList.Sort(comparer);
+
+            //         int idx = _buttonList.BinarySearch(_button, comparer);
+
+            int idx = Get_ButtonIdx(dateInfo);
+
+      //      MessageBox.Show($"내부 처리 | {idx}버튼 클릭: {dateInfo:yyyy-MM-dd}");
+            DateClicked?.Invoke(_button, new DateClickedEventArgs(dateInfo));
+        }
+
+
+        private void Button_MouseHover(object sender, EventArgs e)
+        {
+            var _button = sender as Button;
+            if (_button == null) return;
+            var dateInfo = (DateTime)_button.Tag;
+
+            int idx = Get_ButtonIdx(dateInfo);
+
+            DateMouseHovered?.Invoke(_button, new DateMouseHoveredEventArgs(dateInfo));
+        }
+
+        private int Get_ButtonIdx(DateTime p_dateTime)
+        {
+            Button _button = new Button();
+            _button.Tag = p_dateTime;
+
+            ButtonDateComparer comparer = new ButtonDateComparer();
+            _buttonList.Sort(comparer);
+
+            return _buttonList.BinarySearch(_button, comparer);
+        }
+
+
+        public double avrgContribCount
+        {
+            get { return _avrgContribCount; }
+            private set { _avrgContribCount = ((_avrgContribCount * 365) + value) / 365; }
+        }
+
+      
+
+        private void Set_ButtonColor(Button _button, int _CurContribCount)
+        {
+            Color _defaultColor = Color.FromArgb(220, 250, 200);
+            Color _maxColor = Color.FromArgb(50, 220, 0);
+
+            Color _btnColor;
+
+            int _r, _g, _b;
+
+            if (_CurContribCount == 0)
+                return;
+
+            if (_CurContribCount >= (int)_avrgContribCount)
+            {
+                _btnColor = _maxColor;
+            }
+            else if (_avrgContribCount > (_CurContribCount + 1))
+            {
+                _r = _maxColor.R + (_defaultColor.R - _maxColor.R) * (1 - ((int)_avrgContribCount + 1) / (_CurContribCount + 1));
+                _g = (_maxColor.R - _defaultColor.R);
+                _b = (_maxColor.R - _defaultColor.R);
+                _btnColor = Color.FromArgb(_r, _g, _b);
+            }
+            else
+            {
+                _btnColor = _defaultColor;
+            }
+        }
+        
+    }
+
+    public class ButtonDateComparer : IComparer<Button>
+    {
+        public int Compare(Button x, Button y)
+        {
+            // 널 체크
+            if (x == null && y == null) return 0;
+            if (x == null) return -1;
+            if (y == null) return 1;
+
+            // Tag를 DateTime으로 꺼내기
+            var dx = (DateTime)x.Tag;
+            var dy = (DateTime)y.Tag;
+
+            // DateTime.CompareTo 사용
+            return dx.CompareTo(dy);
         }
     }
+
+    // DateClickedEventArgs 정의
+    public class DateClickedEventArgs : EventArgs
+    {
+        public DateTime Date { get; }
+        public DateClickedEventArgs(DateTime _date) => Date = _date;
+    };
+
+    public class DateMouseHoveredEventArgs : EventArgs
+    {
+        public DateTime Date { get; }
+        public DateMouseHoveredEventArgs(DateTime _date) => Date = _date;
+
+    };
 
 }
