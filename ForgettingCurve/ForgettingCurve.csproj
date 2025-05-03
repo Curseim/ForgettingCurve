@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Data\DataEntryModel.cs" />
+    <Compile Include="Class\Data\FileManager.cs" />
     <Compile Include="Control\ContributionsCalender\ContributionsCalender.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,8 +122,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
