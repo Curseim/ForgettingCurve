@@ -37,12 +37,13 @@ namespace ForgettingCurve.Control
         public event EventHandler<DateBoxClickedEventArgs> DateBoxClicked;
         public event EventHandler<DateBoxMouseHoveredEventArgs> DateBoxMouseHovered;
 
-
+        public ContributionsCalender()
+            : this(2025)
+        { }
 
         public ContributionsCalender(int p_year = 2025)
         {
             InitializeComponent();
-
 
             _dateTime = new DateTime(p_year, 1, 1);
 
@@ -56,7 +57,7 @@ namespace ForgettingCurve.Control
         }
 
 
-        public int Add_ContributionCount(DateTime p_dateTime, uint p_count = 1)
+        public int AddContributionCount(DateTime p_dateTime, uint p_count = 1)
         {
             int _btnIdx;
 
@@ -94,7 +95,7 @@ namespace ForgettingCurve.Control
             return 1;
         }
 
-        public int Get_ContributionCount(DateTime p_dateTime)
+        public int GetContributionCount(DateTime p_dateTime)
         {
             return _contribCountList[GetDateButtonIndex(p_dateTime)];
         }
@@ -293,7 +294,7 @@ namespace ForgettingCurve.Control
 
       
 
-        private void Set_DateButtonColor(DateButton _button, int _CurContribCount)
+        private void SetDateButtonColor(DateButton _button, int _CurContribCount)
         {
             Color _defaultColor = Color.FromArgb(220, 250, 200);
             Color _maxColor = Color.FromArgb(50, 220, 0);

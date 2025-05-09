@@ -29,6 +29,7 @@ namespace ForgettingCurve.Test
         }
 
 
+        // 절차 생성
         private void Ctrl_DateClicked(object sender, DateBoxClickedEventArgs e)
         {
             // 컨트롤에서 전달된 날짜 사용
@@ -44,8 +45,8 @@ namespace ForgettingCurve.Test
             //            MessageBox.Show($"선택된 날짜: {e.Date:yyyy-MM-dd}");
             //            MessageBox.Show($"버튼 클릭: {dateInfo:yyyy-MM-dd}");
 
-            _contributionsCalender.Add_ContributionCount(dateInfo, 1);
-            labelDebug.Text = e.Date.ToString("yyyy-MM-dd") + " | " +  _contributionsCalender.Get_ContributionCount(dateInfo).ToString();
+            _contributionsCalender.AddContributionCount(dateInfo, 1);
+            labelDebug.Text = e.Date.ToString("yyyy-MM-dd") + " | " +  _contributionsCalender.GetContributionCount(dateInfo).ToString();
         }
 
         private void Ctrl_MouseHovered(object sender, EventArgs e)
@@ -61,6 +62,19 @@ namespace ForgettingCurve.Test
             toolTip1.SetToolTip(_button, dateInfo.ToString());
         }
 
+
+
+        // 디자이너 생성
+        private void ContributionsCalender_DateBoxClicked(object sender, DateBoxClickedEventArgs e)
+        {
+            ContributionsCalender.AddContributionCount(e.Date, 1);
+            labelDebug.Text = e.Date.ToString("yyyy-MM-dd") + " | " + ContributionsCalender.GetContributionCount(e.Date).ToString();
+        }
+
+        private void ContributionsCalender_DateBoxMouseHovered(object sender, DateBoxMouseHoveredEventArgs e)
+        {
+            toolTip1.SetToolTip(ContributionsCalender, e.Date.ToString("yyyy-MM-dd"));
+        }
     }
 }
 

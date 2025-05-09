@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.labelDebug = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ContributionsCalender = new ForgettingCurve.Control.ContributionsCalender();
             this.SuspendLayout();
             // 
             // labelDebug
@@ -42,11 +43,23 @@
             this.labelDebug.TabIndex = 0;
             this.labelDebug.Text = "label1";
             // 
+            // ContributionsCalender
+            // 
+            this.ContributionsCalender.BackColor = System.Drawing.SystemColors.Control;
+            this.ContributionsCalender.Location = new System.Drawing.Point(360, 755);
+            this.ContributionsCalender.Margin = new System.Windows.Forms.Padding(4);
+            this.ContributionsCalender.Name = "ContributionsCalender";
+            this.ContributionsCalender.Size = new System.Drawing.Size(1134, 168);
+            this.ContributionsCalender.TabIndex = 1;
+            this.ContributionsCalender.DateBoxClicked += new System.EventHandler<ForgettingCurve.Control.DateBoxClickedEventArgs>(this.ContributionsCalender_DateBoxClicked);
+            this.ContributionsCalender.DateBoxMouseHovered += new System.EventHandler<ForgettingCurve.Control.DateBoxMouseHoveredEventArgs>(this.ContributionsCalender_DateBoxMouseHovered);
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.ContributionsCalender);
             this.Controls.Add(this.labelDebug);
             this.Name = "TestForm";
             this.Text = "TestForm";
@@ -59,5 +72,6 @@
 
         private System.Windows.Forms.Label labelDebug;
         private System.Windows.Forms.ToolTip toolTip1;
+        private Control.ContributionsCalender ContributionsCalender;
     }
 }

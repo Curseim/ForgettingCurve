@@ -71,7 +71,7 @@
             this.Controls.Add(this.label_Wednesday);
             this.Controls.Add(this.label_Saturday);
             this.Controls.Add(this.label_Sunday);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ContributionsCalender";
             this.Size = new System.Drawing.Size(1112, 147);
             this.ResumeLayout(false);
