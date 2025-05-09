@@ -23,17 +23,17 @@ namespace ForgettingCurve.Test
 
             _contributionsCalender.Location = new Point(20, 20);
 
-            _contributionsCalender.DateClicked += Ctrl_DateClicked;
-            _contributionsCalender.DateMouseHovered += Ctrl_MouseHovered;
+            _contributionsCalender.DateBoxClicked += Ctrl_DateClicked;
+            _contributionsCalender.DateBoxMouseHovered += Ctrl_MouseHovered;
             this.Controls.Add(_contributionsCalender);
         }
 
 
-        private void Ctrl_DateClicked(object sender, DateClickedEventArgs e)
+        private void Ctrl_DateClicked(object sender, DateBoxClickedEventArgs e)
         {
             // 컨트롤에서 전달된 날짜 사용
-            labelDebug.Text = "dateInfo.ToString();";
-            Button _button = sender as Button;
+            DateTime date = e.Date;
+            DateButton _button = sender as DateButton;
             if (_button == null)
             {
                 labelDebug.Text = "NULL";
@@ -45,12 +45,12 @@ namespace ForgettingCurve.Test
             //            MessageBox.Show($"버튼 클릭: {dateInfo:yyyy-MM-dd}");
 
             _contributionsCalender.Add_ContributionCount(dateInfo, 1);
-            labelDebug.Text = dateInfo.ToString() + " | " +  _contributionsCalender.Get_ContributionCount(dateInfo).ToString();
+            labelDebug.Text = e.Date.ToString("yyyy-MM-dd") + " | " +  _contributionsCalender.Get_ContributionCount(dateInfo).ToString();
         }
 
         private void Ctrl_MouseHovered(object sender, EventArgs e)
         {
-            Button _button = sender as Button;
+            DateButton _button = sender as DateButton;
             if (_button == null)
             {
                 return;

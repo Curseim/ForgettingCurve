@@ -21,7 +21,7 @@ namespace ForgettingCurve.Control
 
 
 
-        private List<Button> _buttonList;
+        private List<DateButton> _buttonList;
         private List<int> _contribCountList;
 
         private double _avrgContribCount = 0;
@@ -30,12 +30,12 @@ namespace ForgettingCurve.Control
 
         private DateTime _dateTime;
 
-        private object _selectedButtonTag= null;
+        private object _selectedDateButtonTag= null;
 
 
 
-        public event EventHandler<DateClickedEventArgs> DateClicked;
-        public event EventHandler<DateMouseHoveredEventArgs> DateMouseHovered;
+        public event EventHandler<DateBoxClickedEventArgs> DateBoxClicked;
+        public event EventHandler<DateBoxMouseHoveredEventArgs> DateBoxMouseHovered;
 
 
 
@@ -46,13 +46,13 @@ namespace ForgettingCurve.Control
 
             _dateTime = new DateTime(p_year, 1, 1);
 
-            this._buttonList = new List<Button>();
+            this._buttonList = new List<DateButton>();
             this._contribCountList = new List<int>();
 
 
 
             Init_DateList(_dateTime.Year, _contribCountList);
-            Init_ButtonList();
+            Init_DateButtonList();
         }
 
 
@@ -61,7 +61,7 @@ namespace ForgettingCurve.Control
             int _btnIdx;
 
 
-            _btnIdx = Get_ButtonIdx(p_dateTime);
+            _btnIdx = GetDateButtonIndex(p_dateTime);
 
             int _r, _g, _b;
 
@@ -90,13 +90,13 @@ namespace ForgettingCurve.Control
 
             _contribCountList[_btnIdx] += (int)p_count;
             this._avrgContribCount += (double)p_count;
-   //         Set_ButtonColor(_buttonList[_btnIdx], _contribCountList[_btnIdx]);
+   //         Set_DateButtonColor(_buttonList[_btnIdx], _contribCountList[_btnIdx]);
             return 1;
         }
 
         public int Get_ContributionCount(DateTime p_dateTime)
         {
-            return _contribCountList[Get_ButtonIdx(p_dateTime)];
+            return _contribCountList[GetDateButtonIndex(p_dateTime)];
         }
 
 
@@ -172,20 +172,20 @@ namespace ForgettingCurve.Control
 
 
 
-        private void Init_ButtonList()
+        private void Init_DateButtonList()
         {
             int _x_Shift = 0;
             int _y_Shift = 0;
-            int _widthButton = 20;
-            int _heightButton = 20;
-            int _margButton = 1;
-            int _padButton = 1;
+            int _widthDateButton = 20;
+            int _heightDateButton = 20;
+            int _margDateButton = 1;
+            int _padDateButton = 1;
 
             _y_Shift++;
 
-            label_Sunday.Location = new Point(_x_Shift, (_heightButton + (_margButton * 2)) * (0 + _y_Shift));
-            label_Wednesday.Location = new Point(_x_Shift, (_heightButton + (_margButton * 2)) * (3 + _y_Shift));
-            label_Saturday.Location = new Point(_x_Shift, (_heightButton + (_margButton * 2)) * (6 + _y_Shift));
+            label_Sunday.Location = new Point(_x_Shift, (_heightDateButton + (_margDateButton * 2)) * (0 + _y_Shift));
+            label_Wednesday.Location = new Point(_x_Shift, (_heightDateButton + (_margDateButton * 2)) * (3 + _y_Shift));
+            label_Saturday.Location = new Point(_x_Shift, (_heightDateButton + (_margDateButton * 2)) * (6 + _y_Shift));
             _x_Shift++;
 
 
@@ -194,8 +194,8 @@ namespace ForgettingCurve.Control
 
                 System.Windows.Forms.Label _label = new System.Windows.Forms.Label();
 
-                _label.Location = new Point(_x_Shift * (_widthButton + _margButton), _y_Shift - 1);
-                _label.Size = new Size(_widthButton * 2, _heightButton);
+                _label.Location = new Point(_x_Shift * (_widthDateButton + _margDateButton), _y_Shift - 1);
+                _label.Size = new Size(_widthDateButton * 2, _heightDateButton);
   //              _label.Font = new Font(_label.Font.Name, 7);
                 _label.Text = month.ToString();
                 this.Controls.Add(_label);
@@ -205,7 +205,7 @@ namespace ForgettingCurve.Control
 
                 for (int day = 1; day <= DateTime.DaysInMonth(_dateTime.Year, month); day++)
                 {
-                    Button _button = new Button();
+                    DateButton _button = new DateButton();
 
                     _dateTime = new DateTime(_dateTime.Year, month, day);
 
@@ -213,17 +213,18 @@ namespace ForgettingCurve.Control
                     _button.FlatAppearance.BorderSize = 0;
                     _button.UseVisualStyleBackColor = false;
 
-                    _button.Size = new Size(_widthButton, _heightButton);
-                    _button.Margin = new Padding(_margButton);
-                    _button.Padding = new Padding(_padButton);
+                    _button.Size = new Size(_widthDateButton, _heightDateButton);
+                    _button.Margin = new Padding(_margDateButton);
+                    _button.Padding = new Padding(_padDateButton);
                     _button.Location = new Point(_x_Shift * (_button.Size.Width + 1), ((int)_dateTime.DayOfWeek + _y_Shift) * (_button.Size.Height + 1));
 
-                    _button.Tag = new Button().Tag = (_dateTime);
-                    _button.Click += Button_Click;
-                    _button.MouseHover += Button_MouseHover;
+                    _button.Tag = new DateButton().Tag = (_dateTime);
+                    _button.date = _dateTime;
+                    _button.Click += DateButton_Click;
+                    _button.MouseHover += DateButton_MouseHover;
 
            //         _button.Click += (s, e) => {
-           //             var dt = (DateTime)((Button)s).Tag;
+           //             var dt = (DateTime)((DateButton)s).Tag;
            //            MessageBox.Show($"선택된 날짜: {dt:yyyy-MM-dd}");
            //                DateClicked?.Invoke(this, new DateClickedEventArgs(_dateTime));
            //
@@ -239,45 +240,45 @@ namespace ForgettingCurve.Control
             }
 
 
-            this.Size = new Size((_buttonList[0].Width + _margButton) * (_x_Shift + 1), (_buttonList[0].Height + _margButton) * (7 + _y_Shift));
+            this.Size = new Size((_buttonList[0].Width + _margDateButton) * (_x_Shift + 1), (_buttonList[0].Height + _margDateButton) * (7 + _y_Shift));
         }
 
 
-        private void Button_Click(object sender, EventArgs e)
+        private void DateButton_Click(object sender, EventArgs e)
         {
-            var _button = sender as Button;
+            var _button = sender as DateButton;
             if (_button == null) return;
             var dateInfo = (DateTime)_button.Tag;
 
-            //          ButtonDateComparer comparer = new ButtonDateComparer();
+            //          DateButtonDateComparer comparer = new DateButtonDateComparer();
             //         _buttonList.Sort(comparer);
 
             //         int idx = _buttonList.BinarySearch(_button, comparer);
 
-            int idx = Get_ButtonIdx(dateInfo);
+            int idx = GetDateButtonIndex(dateInfo);
 
       //      MessageBox.Show($"내부 처리 | {idx}버튼 클릭: {dateInfo:yyyy-MM-dd}");
-            DateClicked?.Invoke(_button, new DateClickedEventArgs(dateInfo));
+            DateBoxClicked?.Invoke(_button, new DateBoxClickedEventArgs(dateInfo));
         }
 
 
-        private void Button_MouseHover(object sender, EventArgs e)
+        private void DateButton_MouseHover(object sender, EventArgs e)
         {
-            var _button = sender as Button;
+            var _button = sender as DateButton;
             if (_button == null) return;
             var dateInfo = (DateTime)_button.Tag;
 
-            int idx = Get_ButtonIdx(dateInfo);
+            int idx = GetDateButtonIndex(dateInfo);
 
-            DateMouseHovered?.Invoke(_button, new DateMouseHoveredEventArgs(dateInfo));
+            DateBoxMouseHovered?.Invoke(_button, new DateBoxMouseHoveredEventArgs(dateInfo));
         }
 
-        private int Get_ButtonIdx(DateTime p_dateTime)
+        private int GetDateButtonIndex(DateTime p_dateTime)
         {
-            Button _button = new Button();
+            DateButton _button = new DateButton();
             _button.Tag = p_dateTime;
 
-            ButtonDateComparer comparer = new ButtonDateComparer();
+            DateButtonDateComparer comparer = new DateButtonDateComparer();
             _buttonList.Sort(comparer);
 
             return _buttonList.BinarySearch(_button, comparer);
@@ -292,7 +293,7 @@ namespace ForgettingCurve.Control
 
       
 
-        private void Set_ButtonColor(Button _button, int _CurContribCount)
+        private void Set_DateButtonColor(DateButton _button, int _CurContribCount)
         {
             Color _defaultColor = Color.FromArgb(220, 250, 200);
             Color _maxColor = Color.FromArgb(50, 220, 0);
@@ -323,9 +324,14 @@ namespace ForgettingCurve.Control
         
     }
 
-    public class ButtonDateComparer : IComparer<Button>
+    public partial class DateButton : Button
     {
-        public int Compare(Button x, Button y)
+        public DateTime date { get; set; }
+    }
+
+    public class DateButtonDateComparer : IComparer<DateButton>
+    {
+        public int Compare(DateButton x, DateButton y)
         {
             // 널 체크
             if (x == null && y == null) return 0;
@@ -341,17 +347,17 @@ namespace ForgettingCurve.Control
         }
     }
 
-    // DateClickedEventArgs 정의
-    public class DateClickedEventArgs : EventArgs
+    // DateClickedEventArgs 정의, DateBox클릭시 해당 DateBox의 DateTime을 보냄
+    public class DateBoxClickedEventArgs : EventArgs
     {
         public DateTime Date { get; }
-        public DateClickedEventArgs(DateTime _date) => Date = _date;
+        public DateBoxClickedEventArgs(DateTime _date) => Date = _date;
     };
 
-    public class DateMouseHoveredEventArgs : EventArgs
+    public class DateBoxMouseHoveredEventArgs : EventArgs
     {
         public DateTime Date { get; }
-        public DateMouseHoveredEventArgs(DateTime _date) => Date = _date;
+        public DateBoxMouseHoveredEventArgs(DateTime _date) => Date = _date;
 
     };
 
