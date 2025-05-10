@@ -13,67 +13,44 @@ namespace ForgettingCurve.Test
 {
     public partial class TestForm : Form
     {
+
         ContributionsCalender _contributionsCalender;
+
 
         public TestForm()
         {
             InitializeComponent();
 
-            _contributionsCalender = new ContributionsCalender();
-
-            _contributionsCalender.Location = new Point(20, 20);
-
-            _contributionsCalender.DateBoxClicked += Ctrl_DateClicked;
-            _contributionsCalender.DateBoxMouseHovered += Ctrl_MouseHovered;
+            _contributionsCalender = new ContributionsCalender(2025);
+            _contributionsCalender.InnerDateButtonClick += Ctrl_DateClick;
+            _contributionsCalender.InnerDateButtonMouseEnter += Ctrl_MouseEnter;
             this.Controls.Add(_contributionsCalender);
         }
 
 
         // 절차 생성
-        private void Ctrl_DateClicked(object sender, DateBoxClickedEventArgs e)
+        private void Ctrl_DateClick(object sender, InnerDateButton_Click_EventArgs e)
         {
-            // 컨트롤에서 전달된 날짜 사용
-            DateTime date = e.Date;
-            DateButton _button = sender as DateButton;
-            if (_button == null)
-            {
-                labelDebug.Text = "NULL";
-                return;
-            }
-            var dateInfo = (DateTime)_button.Tag;
-
-            //            MessageBox.Show($"선택된 날짜: {e.Date:yyyy-MM-dd}");
-            //            MessageBox.Show($"버튼 클릭: {dateInfo:yyyy-MM-dd}");
-
-            _contributionsCalender.AddContributionCount(dateInfo, 1);
-            labelDebug.Text = e.Date.ToString("yyyy-MM-dd") + " | " +  _contributionsCalender.GetContributionCount(dateInfo).ToString();
+            _contributionsCalender.AddContributionCount(e.DateTime);
+            labelDebug.Text = e.DateTime.ToString(DateButton.DATE_KEY_FORMAT) + " | " + _contributionsCalender.GetContributionCount((sender as DateButton).DateTime);
         }
 
-        private void Ctrl_MouseHovered(object sender, EventArgs e)
+        private void Ctrl_MouseEnter(object sender, InnerDateButton_MouseEnter_EventArgs e)
         {
-            DateButton _button = sender as DateButton;
-            if (_button == null)
-            {
-                return;
-            }
-
-            var dateInfo = _button.Tag;
-
-            toolTip1.SetToolTip(_button, dateInfo.ToString());
+            toolTip1.SetToolTip(sender as Button, e.DateTime.Date.ToString(DateButton.DATE_KEY_FORMAT));
         }
 
 
-
-        // 디자이너 생성
-        private void ContributionsCalender_DateBoxClicked(object sender, DateBoxClickedEventArgs e)
+        // 사전 생성
+        private void ContributionsCalender_InnerDateButtonClick(object sender, InnerDateButton_Click_EventArgs e)
         {
-            ContributionsCalender.AddContributionCount(e.Date, 1);
-            labelDebug.Text = e.Date.ToString("yyyy-MM-dd") + " | " + ContributionsCalender.GetContributionCount(e.Date).ToString();
+            ContributionsCalender.AddContributionCount(e.DateTime);
+            labelDebug.Text = e.DateTime.ToString(DateButton.DATE_KEY_FORMAT) + " | " + ContributionsCalender.GetContributionCount((sender as DateButton).DateTime);
         }
 
-        private void ContributionsCalender_DateBoxMouseHovered(object sender, DateBoxMouseHoveredEventArgs e)
+        private void ContributionsCalender_InnerDateButtonMouseEnter(object sender, InnerDateButton_MouseEnter_EventArgs e)
         {
-            toolTip1.SetToolTip(ContributionsCalender, e.Date.ToString("yyyy-MM-dd"));
+            toolTip1.SetToolTip(sender as Button, e.DateTime.Date.ToString(DateButton.DATE_KEY_FORMAT));
         }
     }
 }

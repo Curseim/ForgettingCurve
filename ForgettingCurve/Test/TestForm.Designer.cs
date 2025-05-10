@@ -1,4 +1,7 @@
-﻿namespace ForgettingCurve.Test
+﻿using ForgettingCurve.Control;
+using System.Drawing;
+
+namespace ForgettingCurve.Test
 {
     partial class TestForm
     {
@@ -37,7 +40,7 @@
             // labelDebug
             // 
             this.labelDebug.AutoSize = true;
-            this.labelDebug.Location = new System.Drawing.Point(621, 586);
+            this.labelDebug.Location = new System.Drawing.Point(525, 339);
             this.labelDebug.Name = "labelDebug";
             this.labelDebug.Size = new System.Drawing.Size(54, 18);
             this.labelDebug.TabIndex = 0;
@@ -46,13 +49,14 @@
             // ContributionsCalender
             // 
             this.ContributionsCalender.BackColor = System.Drawing.SystemColors.Control;
-            this.ContributionsCalender.Location = new System.Drawing.Point(360, 755);
+            this.ContributionsCalender.DateTime = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
+            this.ContributionsCalender.Location = new System.Drawing.Point(35, 472);
             this.ContributionsCalender.Margin = new System.Windows.Forms.Padding(4);
             this.ContributionsCalender.Name = "ContributionsCalender";
             this.ContributionsCalender.Size = new System.Drawing.Size(1134, 168);
             this.ContributionsCalender.TabIndex = 1;
-            this.ContributionsCalender.DateBoxClicked += new System.EventHandler<ForgettingCurve.Control.DateBoxClickedEventArgs>(this.ContributionsCalender_DateBoxClicked);
-            this.ContributionsCalender.DateBoxMouseHovered += new System.EventHandler<ForgettingCurve.Control.DateBoxMouseHoveredEventArgs>(this.ContributionsCalender_DateBoxMouseHovered);
+            this.ContributionsCalender.InnerDateButtonClick += new System.EventHandler<ForgettingCurve.Control.InnerDateButton_Click_EventArgs>(this.ContributionsCalender_InnerDateButtonClick);
+            this.ContributionsCalender.InnerDateButtonMouseEnter += new System.EventHandler<ForgettingCurve.Control.InnerDateButton_MouseEnter_EventArgs>(this.ContributionsCalender_InnerDateButtonMouseEnter);
             // 
             // TestForm
             // 

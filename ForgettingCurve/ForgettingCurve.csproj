@@ -62,6 +62,12 @@
     <Compile Include="Control\ContributionsCalender\ContributionsCalender.Designer.cs">
       <DependentUpon>ContributionsCalender.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\ContributionsCalender\DateButton\DateButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\ContributionsCalender\DateButton\DateButton.Designer.cs">
+      <DependentUpon>DateButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\FileEditor\FileEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <EmbeddedResource Include="Control\ContributionsCalender\ContributionsCalender.resx">
       <DependentUpon>ContributionsCalender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ContributionsCalender\DateButton\DateButton.resx">
+      <DependentUpon>DateButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\FileEditor\FileEditor.resx">
       <DependentUpon>FileEditor.cs</DependentUpon>

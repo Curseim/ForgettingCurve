@@ -1,4 +1,9 @@
-﻿namespace ForgettingCurve.Control
+﻿using System.Collections.Generic;
+using System;
+using System.Drawing;
+using System.ComponentModel;
+
+namespace ForgettingCurve.Control
 {
     partial class ContributionsCalender
     {
@@ -76,7 +81,6 @@
             this.Size = new System.Drawing.Size(1112, 147);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
