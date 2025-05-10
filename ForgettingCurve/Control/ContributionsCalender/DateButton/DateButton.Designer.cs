@@ -40,6 +40,7 @@ namespace ForgettingCurve.Control
             this.UseVisualStyleBackColor = false;
             this.Margin = new Padding(1);
             this.Padding = new Padding(1);
+            INIT_COLOR = BackColor;
         }
 
         #endregion

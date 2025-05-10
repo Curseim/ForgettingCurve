@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,14 +15,19 @@ namespace ForgettingCurve.Control
     public partial class DateButton : Button
     {
 
+        private Color COLOR_MAX = Color.FromArgb(0, 135, 0);
+        private Color COLOR_MIN = Color.FromArgb(220, 250, 230);
+        private Color INIT_COLOR;
+
+        public static string DATE_KEY_FORMAT = "yyyy-MM-dd";
+
+
         public event EventHandler<DateButton_Click_EventArgs> DateButtonOnClick;
 
         public event EventHandler<DateButton_MouseEnter_EventArgs> DateButtonOnMouseEnter;
 
 
 
-
-        public static string DATE_KEY_FORMAT = "yyyy-MM-dd";
 
         public DateTime DateTime {  get; set; }
         public int Value { get; set; } 
@@ -46,28 +52,23 @@ namespace ForgettingCurve.Control
         public void AddValue(int p_val = 1)
         {
             Value += p_val;
+            SetButtonColor();
+        }
 
-            int _r, _g, _b;
+        public void SubtractValue(int p_val = 1)
+        {
+            Value -= p_val;
+            SetButtonColor();
+        }
 
-            _r = this.BackColor.R;
-            _g = this.BackColor.G;
-            _b = this.BackColor.B;
+        private void SetButtonColor()
+        {
+            this.BackColor = LerpColor(COLOR_MIN, COLOR_MAX, (double)Value / 10);
 
-            for (int i = 0; i < p_val; i++)
+            if (this.Value <= 0)
             {
-                _r -= 15;
-                _g -= 6;
-                _b -= 20;
-
-                if (_r < 0 || _b < 0 || _b < 0)
-                {
-                    _r += 15;
-                    _g += 6;
-                    _b += 20;
-                }
+                this.BackColor = INIT_COLOR;
             }
-
-            this.BackColor = Color.FromArgb(_r, _g, _b);
         }
 
         protected override void OnClick(EventArgs e)
@@ -80,6 +81,20 @@ namespace ForgettingCurve.Control
         {
             base.OnMouseEnter(e);
             DateButtonOnMouseEnter?.Invoke(this, new DateButton_MouseEnter_EventArgs(DateTime));
+        }
+
+
+        public static Color LerpColor(Color start, Color end, double fraction)
+        {
+            // fraction을 0~1 사이로 클램프
+            fraction = Math.Min(1, Math.Max(0, fraction));
+
+            int r = (int)(start.R + (end.R - start.R) * fraction);
+            int g = (int)(start.G + (end.G - start.G) * fraction);
+            int b = (int)(start.B + (end.B - start.B) * fraction);
+            int a = (int)(start.A + (end.A - start.A) * fraction);
+
+            return Color.FromArgb(a, r, g, b);
         }
 
     }
@@ -109,4 +124,5 @@ namespace ForgettingCurve.Control
         public DateButton_MouseEnter_EventArgs(DateTime p_dateTime) => DateTime = p_dateTime;
 
     };
+
 }
