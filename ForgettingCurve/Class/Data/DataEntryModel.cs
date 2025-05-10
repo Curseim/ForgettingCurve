@@ -14,5 +14,9 @@ namespace ForgettingCurve.Class.Data
         public double ForgCurvScalar { get; set; }
         public double RemembrRatio { get; set; }
         public string Contents { get; set; }
+
+
+        public DateTime FirstEntry => DateTime.Parse(FirstEntryTime);
     }
+
 }

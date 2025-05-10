@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using System.Web;
+using ForgettingCurve.Class.Data.Repository;
+using System.Windows.Forms.VisualStyles;
 
 namespace ForgettingCurve.Class.Data
 {
@@ -33,12 +35,34 @@ namespace ForgettingCurve.Class.Data
             return JsonConvert.DeserializeObject<List<DataEntryModel>>(_json);
         }
 
-        // ex) FileManager.DeleteDataEntry(path, x => x.FirstTime == "2025-05-01-12:00:00");
+        // ex) FileManager.DeleteDataEntry(_path, x => x.FirstTime == "2025-05-01-12:00:00");
         public static void DeleteDataEntry(string _path, Func<DataEntryModel, bool> _predicate)
         {
             var _data = LoadFromFile(_path);
-            _data = _data.Where(x => _predicate(x)).ToList();
+            _data = _data.Where(x => !_predicate(x)).ToList();
             SaveToFile(_path, _data);
         }
+
+
+    }
+
+    public class JsonFileDataRepository : IDataRepository
+    {
+        private readonly string path;
+        private List<DataEntryModel> _dataEntries;
+
+        public JsonFileDataRepository(string p_path)
+        {
+            this.path = p_path;
+            _dataEntries = FileManager.LoadFromFile(this.path);
+        }
+
+        public IReadOnlyList<DataEntryModel> GetAll() => _dataEntries;
+
+        public void Add(DataEntryModel _dataEntry) => _dataEntries.Add(_dataEntry);
+
+        public void Delete(Func<DataEntryModel, bool> _predicate) => _dataEntries = _dataEntries.Where(x => !_predicate(x)).ToList();
+
+        public void Save() => FileManager.SaveToFile(this.path, _dataEntries);
     }
 }

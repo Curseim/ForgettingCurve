@@ -18,6 +18,9 @@ namespace ForgettingCurve.Test
     {
         static public string m_strJson = string.Empty;
         List<string> m_list = new List<string>();
+
+        List<DataEntryModel> DataEntryModelList = new List<DataEntryModel>();
+
         public TestForm()
         {
             InitializeComponent();
@@ -58,8 +61,8 @@ namespace ForgettingCurve.Test
 
             DataEntryModel entry = new DataEntryModel()
             {
-                FirstEntryTime = now,
-                LastEntryTime = now,
+                FirstEntryTime = DateTime.Now.ToString("yyyy-MM-dd"),
+                LastEntryTime = DateTime.Now.ToString("yyyy-MM-dd"),
                 ForgCurvLevel = 1,
                 ForgCurvScalar = 25,
                 RemembrRatio = 100,
@@ -81,8 +84,8 @@ namespace ForgettingCurve.Test
 
             DataEntryModel _entry = new DataEntryModel()
             {
-                FirstEntryTime = _now,
-                LastEntryTime = _now,
+                FirstEntryTime = DateTime.Now.ToString("yyyy-MM-dd"),
+                LastEntryTime = DateTime.Now.ToString("yyyy-MM-dd"),
                 ForgCurvLevel = 1,
                 ForgCurvScalar = 25,
                 RemembrRatio = 100,
@@ -95,10 +98,30 @@ namespace ForgettingCurve.Test
             FileManager.AppendToFile(m_strJson, _entry);
 
             m_list.Clear();
-
+            DataEntryModelList.Clear();
 
             m_list.Add(JsonConvert.SerializeObject(FileManager.LoadFromFile(m_strJson)));
+
             Json_textBox.Text = string.Join("\r\n\r\n", m_list.ToArray());
+        }
+
+        private void DataScan_Click(object sender, EventArgs e)
+        {
+            DataEntryModelList = FileManager.LoadFromFile(m_strJson);
+
+            int _count = 0;
+            DateTime _dateTime = DateTime.Now;
+            string _strDateTime = _dateTime.ToString("yyyy-MM-dd");
+
+            foreach (DataEntryModel _entry in DataEntryModelList)
+            {
+                if (_entry.FirstEntryTime == _strDateTime)
+                {
+                    _count++;
+                }
+            }
+
+            DataMetaLabel.Text = _count.ToString();
         }
     }
 }
