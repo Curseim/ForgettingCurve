@@ -71,6 +71,7 @@
     <Compile Include="Control\FileEditor\FileEditor.Designer.cs">
       <DependentUpon>FileEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\DataEntryModel.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,9 +122,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Home_Icon.png" />
   </ItemGroup>
