@@ -15,5 +15,7 @@ namespace ForgettingCurve.Class.Data.Repository
         void Delete(Func<DataEntryModel, bool> _predicate);
 
         void Save();
+
+        IReadOnlyList<DataEntryModel> Search(Func<DataEntryModel, bool> _predicate);
     }
 }

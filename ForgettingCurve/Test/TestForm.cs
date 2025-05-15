@@ -20,6 +20,7 @@ namespace ForgettingCurve.Test
         List<string> m_list = new List<string>();
 
         List<DataEntryModel> DataEntryModelList = new List<DataEntryModel>();
+        IReadOnlyList<DataEntryModel> dataEntryModelList = new List<DataEntryModel>();
 
         public TestForm()
         {
@@ -107,21 +108,30 @@ namespace ForgettingCurve.Test
 
         private void DataScan_Click(object sender, EventArgs e)
         {
-            DataEntryModelList = FileManager.LoadFromFile(m_strJson);
+            JsonFileDataRepository _repo = new JsonFileDataRepository(m_strJson);
+
+            //       DataEntryModelList = FileManager.LoadFromFile(m_strJson);
+
+            dataEntryModelList = _repo.GetAll();
+
 
             int _count = 0;
             DateTime _dateTime = DateTime.Now;
             string _strDateTime = _dateTime.ToString("yyyy-MM-dd");
 
-            foreach (DataEntryModel _entry in DataEntryModelList)
-            {
-                if (_entry.FirstEntryTime == _strDateTime)
-                {
-                    _count++;
-                }
-            }
+            IReadOnlyList<DataEntryModel> _list = new List<DataEntryModel>();
+            _list = _repo.Search(x => x.FirstEntry.Date == _dateTime.Date);
 
-            DataMetaLabel.Text = _count.ToString();
+
+            //       foreach (DataEntryModel _entry in DataEntryModelList)
+            //       {
+            //           if (_entry.FirstEntryTime == _strDateTime)
+            //           {
+            //              _count++;
+            //            }
+            //       }
+
+            DataMetaLabel.Text = _list.Count().ToString();
         }
     }
 }

@@ -64,5 +64,7 @@ namespace ForgettingCurve.Class.Data
         public void Delete(Func<DataEntryModel, bool> _predicate) => _dataEntries = _dataEntries.Where(x => !_predicate(x)).ToList();
 
         public void Save() => FileManager.SaveToFile(this.path, _dataEntries);
+
+        public IReadOnlyList<DataEntryModel> Search(Func<DataEntryModel, bool> _predicate) { return _dataEntries.Where(x => _predicate(x)).ToList(); }
     }
 }
