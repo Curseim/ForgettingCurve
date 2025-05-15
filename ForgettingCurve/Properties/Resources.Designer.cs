@@ -63,6 +63,16 @@ namespace ForgettingCurve.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap EditorLogo {
+            get {
+                object obj = ResourceManager.GetObject("EditorLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap File {
             get {
                 object obj = ResourceManager.GetObject("File", resourceCulture);
@@ -86,16 +96,6 @@ namespace ForgettingCurve.Properties {
         internal static System.Drawing.Bitmap Home_Icon {
             get {
                 object obj = ResourceManager.GetObject("Home_Icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap Home_Icon1 {
-            get {
-                object obj = ResourceManager.GetObject("Home_Icon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

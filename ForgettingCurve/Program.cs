@@ -1,9 +1,11 @@
-﻿using ForgettingCurve.Test;
+﻿using ForgettingCurve.Control.FileEditor;
+using ForgettingCurve.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace ForgettingCurve
 {
@@ -19,7 +21,7 @@ namespace ForgettingCurve
                 SetProcessDPIAware();
             }
             #if TEST
-                Application.Run(new TestForm());
+                Application.Run(new TextEditor_Form());
             #else
                 Application.Run(new MainForm());
             #endif

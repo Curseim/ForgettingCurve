@@ -50,7 +50,7 @@
             this.글꼴FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.글꼴크기SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.속성SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.text_Box = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip.SuspendLayout();
@@ -67,7 +67,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip.Size = new System.Drawing.Size(895, 24);
+            this.menuStrip.Size = new System.Drawing.Size(884, 24);
             this.menuStrip.TabIndex = 17;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -90,6 +90,7 @@
             this.새로만들기NToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.새로만들기NToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
             this.새로만들기NToolStripMenuItem.Text = "새로 만들기(&N)";
+            this.새로만들기NToolStripMenuItem.Click += new System.EventHandler(this.새로만들기NToolStripMenuItem_Click);
             // 
             // 열기ToolStripMenuItem
             // 
@@ -114,6 +115,7 @@
             | System.Windows.Forms.Keys.S)));
             this.다른이름으로저장ToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
             this.다른이름으로저장ToolStripMenuItem.Text = "다른 이름으로 저장(&A)";
+            this.다른이름으로저장ToolStripMenuItem.Click += new System.EventHandler(this.다른이름으로저장ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -273,16 +275,16 @@
             this.속성SToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.속성SToolStripMenuItem.Text = "속성(&S)";
             // 
-            // textBox1
+            // text_Box
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 24);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(895, 810);
-            this.textBox1.TabIndex = 18;
+            this.text_Box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.text_Box.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.text_Box.Location = new System.Drawing.Point(0, 24);
+            this.text_Box.Multiline = true;
+            this.text_Box.Name = "text_Box";
+            this.text_Box.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.text_Box.Size = new System.Drawing.Size(884, 737);
+            this.text_Box.TabIndex = 18;
             // 
             // openFileDialog1
             // 
@@ -292,14 +294,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 834);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(884, 761);
+            this.Controls.Add(this.text_Box);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.MinimumSize = new System.Drawing.Size(200, 200);
             this.Name = "FileEditor";
             this.Text = "새 파일 - 텍스트 편집기";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FileEditor_FormClosing);
+            this.Load += new System.EventHandler(this.FileEditor_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -332,7 +335,7 @@
         private System.Windows.Forms.ToolStripMenuItem 확대ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 축소ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 기본값NToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox text_Box;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem 글꼴FToolStripMenuItem;
