@@ -67,6 +67,7 @@ namespace ForgettingCurve.Test
                 ForgCurvLevel = 1,
                 ForgCurvScalar = 25,
                 RemembrRatio = 100,
+                Title = "Good",
                 Contents = Json_AppendBox.Text
             };
 
@@ -90,13 +91,17 @@ namespace ForgettingCurve.Test
                 ForgCurvLevel = 1,
                 ForgCurvScalar = 25,
                 RemembrRatio = 100,
+                Title = "Good",
                 Contents = Json_AppendBox.Text
             };
 
             Json_AppendBox.Text = "";
             Json_textBox.Text = "";
 
-            FileManager.AppendToFile(m_strJson, _entry);
+            List<DataEntryModel> _list = new List<DataEntryModel>();
+            _list.Add(_entry);
+
+            FileManager.AppendToFile(m_strJson, _list);
 
             m_list.Clear();
             DataEntryModelList.Clear();
@@ -108,7 +113,7 @@ namespace ForgettingCurve.Test
 
         private void DataScan_Click(object sender, EventArgs e)
         {
-            JsonFileDataRepository _repo = new JsonFileDataRepository(m_strJson);
+            DataRepository _repo = new DataRepository(m_strJson);
 
             //       DataEntryModelList = FileManager.LoadFromFile(m_strJson);
 

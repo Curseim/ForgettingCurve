@@ -8,7 +8,7 @@ namespace ForgettingCurve.Class.Data.Repository
 {
     public interface IDataRepository
     {
-        IReadOnlyList<DataEntryModel> GetAll();
+        List<DataEntryModel> GetAll();
 
         void Add(DataEntryModel _entry);
         
@@ -16,6 +16,6 @@ namespace ForgettingCurve.Class.Data.Repository
 
         void Save();
 
-        IReadOnlyList<DataEntryModel> Search(Func<DataEntryModel, bool> _predicate);
+        List<DataEntryModel> Search(Func<DataEntryModel, bool> _predicate);
     }
 }

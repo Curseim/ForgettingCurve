@@ -19,10 +19,11 @@ namespace ForgettingCurve.Class.Data
             File.WriteAllText(_path, _json);
         }
 
-        public static void AppendToFile(string  _path, DataEntryModel _newEntry)
+        public static void AppendToFile(string  _path, List<DataEntryModel> _newEntries)
         {
             var _data = LoadFromFile(_path);
-            _data.Add(_newEntry);
+            foreach (DataEntryModel _entry in _newEntries)
+                _data.Add(_entry);
             SaveToFile(_path, _data);
         }
 
@@ -46,18 +47,18 @@ namespace ForgettingCurve.Class.Data
 
     }
 
-    public class JsonFileDataRepository : IDataRepository
+    public class DataRepository : IDataRepository
     {
         private readonly string path;
         private List<DataEntryModel> _dataEntries;
 
-        public JsonFileDataRepository(string p_path)
+        public DataRepository(string p_path)
         {
             this.path = p_path;
             _dataEntries = FileManager.LoadFromFile(this.path);
         }
 
-        public IReadOnlyList<DataEntryModel> GetAll() => _dataEntries;
+        public List<DataEntryModel> GetAll() => _dataEntries;
 
         public void Add(DataEntryModel _dataEntry) => _dataEntries.Add(_dataEntry);
 
@@ -65,6 +66,6 @@ namespace ForgettingCurve.Class.Data
 
         public void Save() => FileManager.SaveToFile(this.path, _dataEntries);
 
-        public IReadOnlyList<DataEntryModel> Search(Func<DataEntryModel, bool> _predicate) { return _dataEntries.Where(x => _predicate(x)).ToList(); }
+        public List<DataEntryModel> Search(Func<DataEntryModel, bool> _predicate) { return _dataEntries.Where(x => _predicate(x)).ToList(); }
     }
 }

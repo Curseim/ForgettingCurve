@@ -13,6 +13,7 @@ namespace ForgettingCurve.Class.Data
         public int ForgCurvLevel {  get; set; }
         public double ForgCurvScalar { get; set; }
         public double RemembrRatio { get; set; }
+        public string Title { get; set; }
         public string Contents { get; set; }
 
 
