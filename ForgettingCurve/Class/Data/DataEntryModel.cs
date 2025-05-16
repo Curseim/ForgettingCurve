@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace ForgettingCurve.Class.Data
         public string Title { get; set; }
         public string Contents { get; set; }
 
-
+        [JsonIgnore]
         public DateTime FirstEntry => DateTime.Parse(FirstEntryTime);
     }
 
