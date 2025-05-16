@@ -72,14 +72,27 @@ namespace ForgettingCurve.Class.Data
             _dataEntries = FileManager.LoadFromFile(this.path);
         }
 
-        public List<DataEntryModel> GetAll() => _dataEntries;
+        public List<DataEntryModel> GetAll()
+            => _dataEntries;
 
-        public void Add(DataEntryModel _dataEntry) => _dataEntries.Add(_dataEntry);
+        public void Add(DataEntryModel _dataEntry)
+            => _dataEntries.Add(_dataEntry);
 
-        public void Delete(Func<DataEntryModel, bool> _predicate) => _dataEntries = _dataEntries.Where(x => !_predicate(x)).ToList();
+        public void Delete(Func<DataEntryModel, bool> _predicate)
+            => _dataEntries = _dataEntries.Where(x => !_predicate(x)).ToList();
 
-        public void Save() => FileManager.SaveToFile(this.path, _dataEntries);
+        public void Save()
+            => FileManager.SaveToFile(this.path, _dataEntries);
 
-        public List<DataEntryModel> Search(Func<DataEntryModel, bool> _predicate) { return _dataEntries.Where(x => _predicate(x)).ToList(); }
+
+        public List<DataEntryModel> Search(Func<DataEntryModel, bool> _predicate)
+        { 
+            return _dataEntries.Where(x => _predicate(x)).ToList(); 
+        }
+
+        public void Modify(Func<DataEntryModel, bool> _predicate, DataEntryModel _dataEntry)
+        {
+            _dataEntries[_dataEntries.FindIndex(x => _predicate(x))] = _dataEntry;
+        }
     }
 }

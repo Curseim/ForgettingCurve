@@ -17,5 +17,7 @@ namespace ForgettingCurve.Class.Data.Repository
         void Save();
 
         List<DataEntryModel> Search(Func<DataEntryModel, bool> _predicate);
+
+        void Modify(Func<DataEntryModel, bool> _predicate, DataEntryModel _entry);
     }
 }
