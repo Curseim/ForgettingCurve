@@ -138,5 +138,10 @@ namespace ForgettingCurve.Test
 
             DataMetaLabel.Text = _list.Count().ToString();
         }
+
+        private void DubugFormButton_Click(object sender, EventArgs e)
+        {
+            new DataDebugForm(m_strJson).Show();
+        }
     }
 }

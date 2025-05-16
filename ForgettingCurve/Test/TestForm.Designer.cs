@@ -35,12 +35,13 @@
             this.Json_AppendBox = new System.Windows.Forms.TextBox();
             this.DataScan = new System.Windows.Forms.Button();
             this.DataMetaLabel = new System.Windows.Forms.Label();
+            this.DubugFormButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Create_Json_Button
             // 
             this.Create_Json_Button.Location = new System.Drawing.Point(1627, 130);
-            this.Create_Json_Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Create_Json_Button.Margin = new System.Windows.Forms.Padding(4);
             this.Create_Json_Button.Name = "Create_Json_Button";
             this.Create_Json_Button.Size = new System.Drawing.Size(107, 34);
             this.Create_Json_Button.TabIndex = 0;
@@ -51,7 +52,7 @@
             // Json_textBox
             // 
             this.Json_textBox.Location = new System.Drawing.Point(256, 75);
-            this.Json_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Json_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.Json_textBox.Multiline = true;
             this.Json_textBox.Name = "Json_textBox";
             this.Json_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -71,7 +72,7 @@
             // Append_Json_Button
             // 
             this.Append_Json_Button.Location = new System.Drawing.Point(1627, 760);
-            this.Append_Json_Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Append_Json_Button.Margin = new System.Windows.Forms.Padding(4);
             this.Append_Json_Button.Name = "Append_Json_Button";
             this.Append_Json_Button.Size = new System.Drawing.Size(136, 34);
             this.Append_Json_Button.TabIndex = 3;
@@ -82,7 +83,7 @@
             // Json_AppendBox
             // 
             this.Json_AppendBox.Location = new System.Drawing.Point(256, 710);
-            this.Json_AppendBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Json_AppendBox.Margin = new System.Windows.Forms.Padding(4);
             this.Json_AppendBox.Multiline = true;
             this.Json_AppendBox.Name = "Json_AppendBox";
             this.Json_AppendBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -108,11 +109,23 @@
             this.DataMetaLabel.TabIndex = 6;
             this.DataMetaLabel.Text = "label2";
             // 
+            // DubugFormButton
+            // 
+            this.DubugFormButton.Location = new System.Drawing.Point(1591, 44);
+            this.DubugFormButton.Margin = new System.Windows.Forms.Padding(4);
+            this.DubugFormButton.Name = "DubugFormButton";
+            this.DubugFormButton.Size = new System.Drawing.Size(172, 34);
+            this.DubugFormButton.TabIndex = 7;
+            this.DubugFormButton.Text = "디버그창 열기";
+            this.DubugFormButton.UseVisualStyleBackColor = true;
+            this.DubugFormButton.Click += new System.EventHandler(this.DubugFormButton_Click);
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1899, 1024);
+            this.Controls.Add(this.DubugFormButton);
             this.Controls.Add(this.DataMetaLabel);
             this.Controls.Add(this.DataScan);
             this.Controls.Add(this.Json_AppendBox);
@@ -136,5 +149,6 @@
         private System.Windows.Forms.TextBox Json_AppendBox;
         private System.Windows.Forms.Button DataScan;
         private System.Windows.Forms.Label DataMetaLabel;
+        private System.Windows.Forms.Button DubugFormButton;
     }
 }

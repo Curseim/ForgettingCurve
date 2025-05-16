@@ -18,12 +18,23 @@ namespace ForgettingCurve.Class.Data
             string _json = JsonConvert.SerializeObject(_dataEntries, Formatting.Indented);
             File.WriteAllText(_path, _json);
         }
+        public static void SaveToFile(string _path, DataEntryModel _dataEntries)
+        {
+            string _json = JsonConvert.SerializeObject(_dataEntries, Formatting.Indented);
+            File.WriteAllText(_path, _json);
+        }
 
         public static void AppendToFile(string  _path, List<DataEntryModel> _newEntries)
         {
             var _data = LoadFromFile(_path);
             foreach (DataEntryModel _entry in _newEntries)
                 _data.Add(_entry);
+            SaveToFile(_path, _data);
+        }
+        public static void AppendToFile(string _path, DataEntryModel _newEntry)
+        {
+            var _data = LoadFromFile(_path);
+            _data.Add(_newEntry);
             SaveToFile(_path, _data);
         }
 
@@ -33,7 +44,10 @@ namespace ForgettingCurve.Class.Data
                 return new List<DataEntryModel>();
 
             string _json = File.ReadAllText(_path);
-            return JsonConvert.DeserializeObject<List<DataEntryModel>>(_json);
+            if (string.IsNullOrEmpty(_json))
+                return new List<DataEntryModel>();
+            else
+                return JsonConvert.DeserializeObject<List<DataEntryModel>>(_json);
         }
 
         // ex) FileManager.DeleteDataEntry(_path, x => x.FirstTime == "2025-05-01-12:00:00");
