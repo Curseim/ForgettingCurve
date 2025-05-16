@@ -56,16 +56,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\ContributionsCalender\ContributionsCalender.cs">
+    <Compile Include="Control\Calender\CalenderContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Control\ContributionsCalender\ContributionsCalender.Designer.cs">
+    <Compile Include="Control\Calender\CalenderContainer.Designer.cs">
+      <DependentUpon>CalenderContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Calender\ContributionsCalender\ContributionsCalender.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Calender\ContributionsCalender\ContributionsCalender.Designer.cs">
       <DependentUpon>ContributionsCalender.cs</DependentUpon>
     </Compile>
-    <Compile Include="Control\ContributionsCalender\DateButton\DateButton.cs">
+    <Compile Include="Control\Calender\ContributionsCalender\DateButton\DateButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Control\ContributionsCalender\DateButton\DateButton.Designer.cs">
+    <Compile Include="Control\Calender\ContributionsCalender\DateButton\DateButton.Designer.cs">
       <DependentUpon>DateButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\FileEditor\FileEditor.cs">
@@ -88,10 +94,13 @@
     <Compile Include="Test\TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Control\ContributionsCalender\ContributionsCalender.resx">
+    <EmbeddedResource Include="Control\Calender\CalenderContainer.resx">
+      <DependentUpon>CalenderContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\Calender\ContributionsCalender\ContributionsCalender.resx">
       <DependentUpon>ContributionsCalender.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Control\ContributionsCalender\DateButton\DateButton.resx">
+    <EmbeddedResource Include="Control\Calender\ContributionsCalender\DateButton\DateButton.resx">
       <DependentUpon>DateButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\FileEditor\FileEditor.resx">
