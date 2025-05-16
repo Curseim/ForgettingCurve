@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace ForgettingCurve {
     public partial class MainForm : Form {
 
-        FileEditor fileEditor = new FileEditor();
+        TextEditor_Form textEditor = new TextEditor_Form();
 
         public MainForm() {
             InitializeComponent();
@@ -18,7 +18,7 @@ namespace ForgettingCurve {
         private void newFile_Button_Click(object sender, EventArgs e) {
             // 비Dialog 방식 : 자식 폼 상관 없이 부모 폼을 컨트롤 할 수 있음 : .Show() 사용
             // Dialog 방식   : 자식 폼이 꺼지지 않으면 부모 폼을 컨트롤 할 수 없음 : .ShowDialog() 사용
-            fileEditor.Show(); // 비Dialog 방식으로 fileEditor 폼을 오픈
+            textEditor.Show(); // 비Dialog 방식으로 fileEditor 폼을 오픈
         }
 
         private void close_Button_Click(object sender, EventArgs e) {
