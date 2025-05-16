@@ -7,43 +7,103 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ForgettingCurve.Class.Data
 {
     public partial class DataDebugForm : Form
     {
-        static public string _filePath;
+        private string _path;
 
-        public DataDebugForm(string p_filePath)
+        public DataDebugForm()
         {
             InitializeComponent();
+            Init(Directory.GetCurrentDirectory(), Application.ProductName);
+        }
+        public DataDebugForm(string p_dirPath, string p_fileName)
+        {
+            InitializeComponent();
+            Init(p_dirPath, p_fileName);
+        }
 
-            _filePath = p_filePath;
-            FilePathLabel.Text = "경로 : " + _filePath;
+        private void Init(string p_dirPath, string p_fileName)
+        {
+            DateTime _dateTime = DateTime.Now;
+
+            DirPathTextBox.Text = p_dirPath;
+            FileNameTextBox.Text = p_fileName;
+            FileFormetComboBox.Text = ".Json";
+            _path = p_dirPath + "\\" + p_fileName + FileFormetComboBox.Text;
+            FilePathLabel.Text = "설정 경로 및 이름 >> " + _path;
+
+            dateTimePicker.Value = _dateTime;
+            HourNumericUpDown.Value = _dateTime.Hour;
+            MinuteNumericUpDown.Value = _dateTime.Minute;
+            SecondNumericUpDown.Value = _dateTime.Second;
+
+            if (TimeBindingCheckBox.Checked)
+                SecondTimer.Start();
+        }
+
+        private void SetFilePathButton_Click(object sender, EventArgs e)
+        {
+            _path = DirPathTextBox.Text + "\\" + FileNameTextBox.Text + FileFormetComboBox.Text;
+            FilePathLabel.Text = "설정 경로 및 이름 >> " + _path;
         }
 
         private void AddFileDataButton_Click(object sender, EventArgs e)
         {
-            DateTime dateTime = dateTimePicker.Value.Date;
+            DateTime _dateTime = dateTimePicker.Value.Date;
 
-            dateTime =
-                dateTime
+
+
+
+            if (Decimal.TryParse(ForgCurveScalarTextBox.Text, out decimal value))
+            {
+                if (!(0 <= value && value <= 100))
+                {
+                    MessageBox.Show(
+                        ForgCurvScalarLabel.Text + " - 0 이상 100 이하 입력",
+                        ForgCurvScalarLabel.Text,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show(
+                    ForgCurvScalarLabel.Text + " - 실수만 입력",
+                    ForgCurvScalarLabel.Text,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+
+
+
+            _dateTime =
+                _dateTime
                     .AddHours((double)HourNumericUpDown.Value)
                     .AddMinutes((double)MinuteNumericUpDown.Value)
                     .AddSeconds((double)SecondNumericUpDown.Value);
 
             DataEntryModel _data = new DataEntryModel()
             {
-                FirstEntryTime = dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
-                LastEntryTime = dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
-                ForgCurvLevel = 1,
-                ForgCurvScalar = 25,
-                RemembrRatio = 100,
+                FirstEntryTime = _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
+                LastEntryTime = _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
+                ForgCurvLevel = (int)Decimal.Parse(ForgCurvLevelComboBox.Text),
+                ForgCurvScalar = (int)Decimal.Parse(ForgCurveScalarTextBox.Text),
+                RemembrRatio = (double)RememberRatioNumericUpDown.Value,
                 Title = TitleTextBox.Text,
                 Contents = ContentTextBox.Text
             };
 
-            FileManager.AppendToFile(_filePath, _data);
+
+            
+            FileManager.AppendToFile(_path, _data);
 
             TitleTextBox.Text = "";
             ContentTextBox.Text = "";
@@ -96,6 +156,84 @@ namespace ForgettingCurve.Class.Data
                 MinuteNumericUpDown.Value--;
                 MinuteNumericUpDown_ValueChanged(sender, e);
             }
+        }
+
+        private void SecondTimer_Tick(object sender, EventArgs e)
+        {
+            DateTime _dateTime = DateTime.Now;
+
+            dateTimePicker.Value = _dateTime;
+            HourNumericUpDown.Value = _dateTime.Hour;
+            MinuteNumericUpDown.Value = _dateTime.Minute;
+            SecondNumericUpDown.Value = _dateTime.Second;
+        }
+
+        private void TimeBindingCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (TimeBindingCheckBox.Checked)
+                SecondTimer.Start();
+            else
+                SecondTimer.Stop();
+        }
+
+        private void ReadDataByDateTimeButton_Click(object sender, EventArgs e)
+        {
+            DateTime _dateTime = dateTimePicker.Value.Date;
+
+            _dateTime =
+                _dateTime
+                    .AddHours((double)HourNumericUpDown.Value)
+                    .AddMinutes((double)MinuteNumericUpDown.Value)
+                    .AddSeconds((double)SecondNumericUpDown.Value);
+
+            DataRepository _repo = new DataRepository(_path);
+            List<DataEntryModel> _dataEntries = _repo.Search(x => x.FirstEntryTime == _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"));
+            DataEntryModel _dataEntry;
+
+            if (_dataEntries.Count < 1)
+            {
+                MessageBox.Show(
+                    "찾지 못함",
+                    "",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+            else
+                _dataEntry = _dataEntries[0];
+
+            ForgCurvLevelComboBox.Text = _dataEntry.ForgCurvLevel.ToString();
+            ForgCurveScalarTextBox.Text = _dataEntry.ForgCurvScalar.ToString();
+            RememberRatioNumericUpDown.Value = (decimal)_dataEntry.RemembrRatio;
+            TitleTextBox.Text = _dataEntry.Title;
+            ContentTextBox.Text = _dataEntry.Contents;
+        }
+
+        private void ModifyDataByDateTimeButton_Click(object sender, EventArgs e)
+        {
+            DateTime _dateTime = dateTimePicker.Value.Date;
+
+            _dateTime =
+                _dateTime
+                    .AddHours((double)HourNumericUpDown.Value)
+                    .AddMinutes((double)MinuteNumericUpDown.Value)
+                    .AddSeconds((double)SecondNumericUpDown.Value);
+
+            DataRepository _repo = new DataRepository(_path);
+
+            DataEntryModel _data = new DataEntryModel()
+            {
+                FirstEntryTime = _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
+                LastEntryTime = _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
+                ForgCurvLevel = (int)Decimal.Parse(ForgCurvLevelComboBox.Text),
+                ForgCurvScalar = (int)Decimal.Parse(ForgCurveScalarTextBox.Text),
+                RemembrRatio = (double)RememberRatioNumericUpDown.Value,
+                Title = TitleTextBox.Text,
+                Contents = ContentTextBox.Text
+            };
+
+            _repo.Modify(x => x.FirstEntryTime == _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"), _data);
+            _repo.Save();
         }
     }
 }

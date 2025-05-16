@@ -141,7 +141,7 @@ namespace ForgettingCurve.Test
 
         private void DubugFormButton_Click(object sender, EventArgs e)
         {
-            new DataDebugForm(m_strJson).Show();
+            new DataDebugForm().Show();
         }
     }
 }
