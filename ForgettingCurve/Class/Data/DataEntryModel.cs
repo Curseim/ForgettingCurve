@@ -9,6 +9,8 @@ namespace ForgettingCurve.Class.Data
 {
     public class DataEntryModel
     {
+        static public string KEY_FORMAT { get { return "yyyy-MM-dd-HH:mm:ss"; } }
+
         public string FirstEntryTime { get; set; }
         public string LastEntryTime { get; set; }
         public int ForgCurvLevel {  get; set; }
@@ -18,7 +20,7 @@ namespace ForgettingCurve.Class.Data
         public string Contents { get; set; }
 
         [JsonIgnore]
-        public DateTime FirstEntry => DateTime.Parse(FirstEntryTime);
+        public string Key => FirstEntryTime;
     }
 
 }

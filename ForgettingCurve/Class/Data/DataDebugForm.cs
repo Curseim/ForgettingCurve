@@ -92,8 +92,8 @@ namespace ForgettingCurve.Class.Data
 
             DataEntryModel _data = new DataEntryModel()
             {
-                FirstEntryTime = _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
-                LastEntryTime = _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
+                FirstEntryTime = _dateTime.ToString(DataEntryModel.KEY_FORMAT),
+                LastEntryTime = _dateTime.ToString(DataEntryModel.KEY_FORMAT),
                 ForgCurvLevel = (int)Decimal.Parse(ForgCurvLevelComboBox.Text),
                 ForgCurvScalar = (int)Decimal.Parse(ForgCurveScalarTextBox.Text),
                 RemembrRatio = (double)RememberRatioNumericUpDown.Value,
@@ -187,7 +187,7 @@ namespace ForgettingCurve.Class.Data
                     .AddSeconds((double)SecondNumericUpDown.Value);
 
             DataRepository _repo = new DataRepository(_path);
-            List<DataEntryModel> _dataEntries = _repo.Search(x => x.FirstEntryTime == _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"));
+            List<DataEntryModel> _dataEntries = _repo.Search(x => x.Key == _dateTime.ToString(DataEntryModel.KEY_FORMAT));
             DataEntryModel _dataEntry;
 
             if (_dataEntries.Count < 1)
@@ -220,11 +220,25 @@ namespace ForgettingCurve.Class.Data
                     .AddSeconds((double)SecondNumericUpDown.Value);
 
             DataRepository _repo = new DataRepository(_path);
+            List<DataEntryModel> _dataEntries = _repo.Search(x => x.Key == _dateTime.ToString(DataEntryModel.KEY_FORMAT));
+            DataEntryModel _dataEntry;
 
-            DataEntryModel _data = new DataEntryModel()
+
+            if (_dataEntries.Count < 1)
             {
-                FirstEntryTime = _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
-                LastEntryTime = _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"),
+                MessageBox.Show(
+                    "찾지 못함",
+                    "",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+
+
+            _dataEntry = new DataEntryModel()
+            {
+                FirstEntryTime = _dateTime.ToString(DataEntryModel.KEY_FORMAT),
+                LastEntryTime = _dateTime.ToString(DataEntryModel.KEY_FORMAT),
                 ForgCurvLevel = (int)Decimal.Parse(ForgCurvLevelComboBox.Text),
                 ForgCurvScalar = (int)Decimal.Parse(ForgCurveScalarTextBox.Text),
                 RemembrRatio = (double)RememberRatioNumericUpDown.Value,
@@ -232,7 +246,7 @@ namespace ForgettingCurve.Class.Data
                 Contents = ContentTextBox.Text
             };
 
-            _repo.Modify(x => x.FirstEntryTime == _dateTime.ToString("yyyy-MM-dd-HH:mm:ss"), _data);
+            _repo.Modify(x => x.Key == _dataEntry.Key, _dataEntry);
             _repo.Save();
         }
     }

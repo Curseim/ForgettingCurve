@@ -31,9 +31,8 @@ namespace ForgettingCurve.Test
 
             // 실행 파일 경로 + 프로젝트 이름
             m_strJson = System.IO.Directory.GetCurrentDirectory() + "/" + strProjectJson;
-            label1.Text = m_strJson;
         }
-
+        /*
         private void Create_Json_Button_Click(object sender, EventArgs e)
         {
             string now = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
@@ -110,34 +109,7 @@ namespace ForgettingCurve.Test
 
             Json_textBox.Text = string.Join("\r\n\r\n", m_list.ToArray());
         }
-
-        private void DataScan_Click(object sender, EventArgs e)
-        {
-            DataRepository _repo = new DataRepository(m_strJson);
-
-            //       DataEntryModelList = FileManager.LoadFromFile(m_strJson);
-
-            dataEntryModelList = _repo.GetAll();
-
-
-            int _count = 0;
-            DateTime _dateTime = DateTime.Now;
-            string _strDateTime = _dateTime.ToString("yyyy-MM-dd");
-
-            IReadOnlyList<DataEntryModel> _list = new List<DataEntryModel>();
-            _list = _repo.Search(x => x.FirstEntry.Date == _dateTime.Date);
-
-
-            //       foreach (DataEntryModel _entry in DataEntryModelList)
-            //       {
-            //           if (_entry.FirstEntryTime == _strDateTime)
-            //           {
-            //              _count++;
-            //            }
-            //       }
-
-            DataMetaLabel.Text = _list.Count().ToString();
-        }
+        */
 
         private void DubugFormButton_Click(object sender, EventArgs e)
         {
