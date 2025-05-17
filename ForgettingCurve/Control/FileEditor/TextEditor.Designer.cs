@@ -32,21 +32,23 @@
             this.close_button = new System.Windows.Forms.Button();
             this.textBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.tab_show_Color = new System.Windows.Forms.Panel();
-            this.tab_show_Button = new System.Windows.Forms.Button();
+            this.tab_view_Color = new System.Windows.Forms.Panel();
+            this.tab_view_Button = new System.Windows.Forms.Button();
             this.tab_design_Color = new System.Windows.Forms.Panel();
             this.tab_design_Button = new System.Windows.Forms.Button();
             this.tab_edit_Color = new System.Windows.Forms.Panel();
             this.tab_edit_Button = new System.Windows.Forms.Button();
-            this.tab_File_Color = new System.Windows.Forms.Panel();
+            this.tab_file_Color = new System.Windows.Forms.Panel();
             this.tab_file_Button = new System.Windows.Forms.Button();
             this.tab_toolBox = new System.Windows.Forms.Panel();
+            this.control_Panel = new ForgettingCurve.Control.FileEditor.Tab.Control_File();
             this.windows_panel.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
-            this.tab_show_Color.SuspendLayout();
+            this.tab_view_Color.SuspendLayout();
             this.tab_design_Color.SuspendLayout();
             this.tab_edit_Color.SuspendLayout();
-            this.tab_File_Color.SuspendLayout();
+            this.tab_file_Color.SuspendLayout();
+            this.tab_toolBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // windows_panel
@@ -92,6 +94,7 @@
             this.windows_text.TabIndex = 3;
             this.windows_text.Text = "텍스트 편집기 - 새 텍스트";
             this.windows_text.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.windows_text.MouseDown += new System.Windows.Forms.MouseEventHandler(this.windows_text_MouseDown);
             // 
             // hide_button
             // 
@@ -99,15 +102,16 @@
             this.hide_button.FlatAppearance.BorderSize = 0;
             this.hide_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.hide_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hide_button.Font = new System.Drawing.Font("넥슨Lv1고딕 OTF Light", 9F);
+            this.hide_button.Font = new System.Drawing.Font("Webdings", 12F);
             this.hide_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.hide_button.Location = new System.Drawing.Point(745, 0);
             this.hide_button.Margin = new System.Windows.Forms.Padding(0);
             this.hide_button.Name = "hide_button";
             this.hide_button.Size = new System.Drawing.Size(50, 46);
             this.hide_button.TabIndex = 2;
-            this.hide_button.Text = "─";
+            this.hide_button.Text = "0";
             this.hide_button.UseVisualStyleBackColor = true;
+            this.hide_button.Click += new System.EventHandler(this.hide_button_Click);
             // 
             // windows_button
             // 
@@ -115,15 +119,16 @@
             this.windows_button.FlatAppearance.BorderSize = 0;
             this.windows_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.windows_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.windows_button.Font = new System.Drawing.Font("넥슨Lv1고딕 OTF Light", 9F);
+            this.windows_button.Font = new System.Drawing.Font("Webdings", 12F);
             this.windows_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.windows_button.Location = new System.Drawing.Point(795, 0);
             this.windows_button.Margin = new System.Windows.Forms.Padding(0);
             this.windows_button.Name = "windows_button";
             this.windows_button.Size = new System.Drawing.Size(50, 46);
             this.windows_button.TabIndex = 1;
-            this.windows_button.Text = "□";
+            this.windows_button.Text = "1";
             this.windows_button.UseVisualStyleBackColor = true;
+            this.windows_button.Click += new System.EventHandler(this.windows_button_Click);
             // 
             // close_button
             // 
@@ -131,31 +136,32 @@
             this.close_button.FlatAppearance.BorderSize = 0;
             this.close_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.close_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.close_button.Font = new System.Drawing.Font("넥슨Lv1고딕 OTF Light", 10F);
+            this.close_button.Font = new System.Drawing.Font("Webdings", 12F);
             this.close_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.close_button.Location = new System.Drawing.Point(845, 0);
             this.close_button.Margin = new System.Windows.Forms.Padding(0);
             this.close_button.Name = "close_button";
             this.close_button.Size = new System.Drawing.Size(50, 46);
             this.close_button.TabIndex = 0;
-            this.close_button.Text = "X";
+            this.close_button.Text = "r";
             this.close_button.UseVisualStyleBackColor = true;
+            this.close_button.Click += new System.EventHandler(this.close_button_Click);
             // 
             // textBox
             // 
             this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox.Location = new System.Drawing.Point(0, 164);
+            this.textBox.Location = new System.Drawing.Point(0, 176);
+            this.textBox.Margin = new System.Windows.Forms.Padding(0);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(895, 670);
+            this.textBox.Size = new System.Drawing.Size(895, 658);
             this.textBox.TabIndex = 1;
             // 
             // tableLayoutPanel
             // 
             this.tableLayoutPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tableLayoutPanel.ColumnCount = 11;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tableLayoutPanel.ColumnCount = 10;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
@@ -166,10 +172,11 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel.Controls.Add(this.tab_show_Color, 7, 0);
-            this.tableLayoutPanel.Controls.Add(this.tab_design_Color, 5, 0);
-            this.tableLayoutPanel.Controls.Add(this.tab_edit_Color, 3, 0);
-            this.tableLayoutPanel.Controls.Add(this.tab_File_Color, 1, 0);
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel.Controls.Add(this.tab_view_Color, 6, 0);
+            this.tableLayoutPanel.Controls.Add(this.tab_design_Color, 4, 0);
+            this.tableLayoutPanel.Controls.Add(this.tab_edit_Color, 2, 0);
+            this.tableLayoutPanel.Controls.Add(this.tab_file_Color, 0, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 46);
             this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -179,40 +186,41 @@
             this.tableLayoutPanel.Size = new System.Drawing.Size(895, 33);
             this.tableLayoutPanel.TabIndex = 2;
             // 
-            // tab_show_Color
+            // tab_view_Color
             // 
-            this.tab_show_Color.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tab_show_Color.Controls.Add(this.tab_show_Button);
-            this.tab_show_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tab_show_Color.Location = new System.Drawing.Point(188, 0);
-            this.tab_show_Color.Margin = new System.Windows.Forms.Padding(0);
-            this.tab_show_Color.Name = "tab_show_Color";
-            this.tab_show_Color.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.tab_show_Color.Size = new System.Drawing.Size(60, 33);
-            this.tab_show_Color.TabIndex = 3;
+            this.tab_view_Color.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tab_view_Color.Controls.Add(this.tab_view_Button);
+            this.tab_view_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tab_view_Color.Location = new System.Drawing.Point(186, 0);
+            this.tab_view_Color.Margin = new System.Windows.Forms.Padding(0);
+            this.tab_view_Color.Name = "tab_view_Color";
+            this.tab_view_Color.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.tab_view_Color.Size = new System.Drawing.Size(60, 33);
+            this.tab_view_Color.TabIndex = 3;
             // 
-            // tab_show_Button
+            // tab_view_Button
             // 
-            this.tab_show_Button.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tab_show_Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tab_show_Button.FlatAppearance.BorderSize = 0;
-            this.tab_show_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tab_show_Button.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tab_show_Button.Location = new System.Drawing.Point(0, 0);
-            this.tab_show_Button.Margin = new System.Windows.Forms.Padding(0);
-            this.tab_show_Button.Name = "tab_show_Button";
-            this.tab_show_Button.Size = new System.Drawing.Size(60, 28);
-            this.tab_show_Button.TabIndex = 0;
-            this.tab_show_Button.Text = "보기";
-            this.tab_show_Button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tab_show_Button.UseVisualStyleBackColor = false;
+            this.tab_view_Button.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tab_view_Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tab_view_Button.FlatAppearance.BorderSize = 0;
+            this.tab_view_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tab_view_Button.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tab_view_Button.Location = new System.Drawing.Point(0, 0);
+            this.tab_view_Button.Margin = new System.Windows.Forms.Padding(0);
+            this.tab_view_Button.Name = "tab_view_Button";
+            this.tab_view_Button.Size = new System.Drawing.Size(60, 28);
+            this.tab_view_Button.TabIndex = 0;
+            this.tab_view_Button.Text = "보기";
+            this.tab_view_Button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tab_view_Button.UseVisualStyleBackColor = false;
+            this.tab_view_Button.Click += new System.EventHandler(this.tab_view_Button_Click);
             // 
             // tab_design_Color
             // 
-            this.tab_design_Color.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tab_design_Color.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tab_design_Color.Controls.Add(this.tab_design_Button);
             this.tab_design_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tab_design_Color.Location = new System.Drawing.Point(126, 0);
+            this.tab_design_Color.Location = new System.Drawing.Point(124, 0);
             this.tab_design_Color.Margin = new System.Windows.Forms.Padding(0);
             this.tab_design_Color.Name = "tab_design_Color";
             this.tab_design_Color.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
@@ -234,13 +242,14 @@
             this.tab_design_Button.Text = "서식";
             this.tab_design_Button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tab_design_Button.UseVisualStyleBackColor = false;
+            this.tab_design_Button.Click += new System.EventHandler(this.tab_design_Button_Click);
             // 
             // tab_edit_Color
             // 
-            this.tab_edit_Color.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tab_edit_Color.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tab_edit_Color.Controls.Add(this.tab_edit_Button);
             this.tab_edit_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tab_edit_Color.Location = new System.Drawing.Point(64, 0);
+            this.tab_edit_Color.Location = new System.Drawing.Point(62, 0);
             this.tab_edit_Color.Margin = new System.Windows.Forms.Padding(0);
             this.tab_edit_Color.Name = "tab_edit_Color";
             this.tab_edit_Color.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
@@ -262,18 +271,19 @@
             this.tab_edit_Button.Text = "편집";
             this.tab_edit_Button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tab_edit_Button.UseVisualStyleBackColor = false;
+            this.tab_edit_Button.Click += new System.EventHandler(this.tab_edit_Button_Click);
             // 
-            // tab_File_Color
+            // tab_file_Color
             // 
-            this.tab_File_Color.BackColor = System.Drawing.Color.DodgerBlue;
-            this.tab_File_Color.Controls.Add(this.tab_file_Button);
-            this.tab_File_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tab_File_Color.Location = new System.Drawing.Point(2, 0);
-            this.tab_File_Color.Margin = new System.Windows.Forms.Padding(0);
-            this.tab_File_Color.Name = "tab_File_Color";
-            this.tab_File_Color.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.tab_File_Color.Size = new System.Drawing.Size(60, 33);
-            this.tab_File_Color.TabIndex = 0;
+            this.tab_file_Color.BackColor = System.Drawing.Color.DodgerBlue;
+            this.tab_file_Color.Controls.Add(this.tab_file_Button);
+            this.tab_file_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tab_file_Color.Location = new System.Drawing.Point(0, 0);
+            this.tab_file_Color.Margin = new System.Windows.Forms.Padding(0);
+            this.tab_file_Color.Name = "tab_file_Color";
+            this.tab_file_Color.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.tab_file_Color.Size = new System.Drawing.Size(60, 33);
+            this.tab_file_Color.TabIndex = 0;
             // 
             // tab_file_Button
             // 
@@ -290,14 +300,24 @@
             this.tab_file_Button.Text = "파일";
             this.tab_file_Button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tab_file_Button.UseVisualStyleBackColor = false;
+            this.tab_file_Button.Click += new System.EventHandler(this.tab_file_Button_Click);
             // 
             // tab_toolBox
             // 
+            this.tab_toolBox.Controls.Add(this.control_Panel);
             this.tab_toolBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tab_toolBox.Location = new System.Drawing.Point(0, 79);
             this.tab_toolBox.Name = "tab_toolBox";
-            this.tab_toolBox.Size = new System.Drawing.Size(895, 85);
+            this.tab_toolBox.Size = new System.Drawing.Size(895, 97);
             this.tab_toolBox.TabIndex = 3;
+            // 
+            // control_Panel
+            // 
+            this.control_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.control_Panel.Location = new System.Drawing.Point(0, 0);
+            this.control_Panel.Name = "control_Panel";
+            this.control_Panel.Size = new System.Drawing.Size(895, 97);
+            this.control_Panel.TabIndex = 0;
             // 
             // TextEditor_Form
             // 
@@ -313,12 +333,14 @@
             this.Name = "TextEditor_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TextEditor";
+            this.Load += new System.EventHandler(this.TextEditor_Form_Load);
             this.windows_panel.ResumeLayout(false);
             this.tableLayoutPanel.ResumeLayout(false);
-            this.tab_show_Color.ResumeLayout(false);
+            this.tab_view_Color.ResumeLayout(false);
             this.tab_design_Color.ResumeLayout(false);
             this.tab_edit_Color.ResumeLayout(false);
-            this.tab_File_Color.ResumeLayout(false);
+            this.tab_file_Color.ResumeLayout(false);
+            this.tab_toolBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,13 +356,14 @@
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.Panel tab_toolBox;
-        private System.Windows.Forms.Panel tab_File_Color;
+        private System.Windows.Forms.Panel tab_file_Color;
         private System.Windows.Forms.Button tab_file_Button;
-        private System.Windows.Forms.Panel tab_show_Color;
-        private System.Windows.Forms.Button tab_show_Button;
+        private System.Windows.Forms.Panel tab_view_Color;
+        private System.Windows.Forms.Button tab_view_Button;
         private System.Windows.Forms.Panel tab_design_Color;
         private System.Windows.Forms.Button tab_design_Button;
         private System.Windows.Forms.Panel tab_edit_Color;
         private System.Windows.Forms.Button tab_edit_Button;
+        private Tab.Control_File control_Panel;
     }
 }
