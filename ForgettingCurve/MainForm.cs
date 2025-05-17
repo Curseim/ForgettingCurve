@@ -1,11 +1,14 @@
-﻿using ForgettingCurve.Control.FileEditor;
+﻿using ForgettingCurve.Control.Calender;
+using ForgettingCurve.Control.FileEditor;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ForgettingCurve {
     public partial class MainForm : Form {
 
         FileEditor fileEditor = new FileEditor();
+        CalenderControl calenderControl = new CalenderControl();
 
         public MainForm() {
             InitializeComponent();
@@ -23,6 +26,18 @@ namespace ForgettingCurve {
 
         private void close_Button_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        private void calender_Button_Click(object sender, EventArgs e)
+        {
+            recentFile_Text.Visible = false;
+            recentFIle_Panel.Visible = false;
+            if (!calenderControl.IsDisposed)
+                calenderControl.Dispose();
+            calenderControl = new CalenderControl();
+            this.Controls.Add(calenderControl);
+            calenderControl.Location = new Point(300, 200);
+            calenderControl.BringToFront();
         }
     }
 }
