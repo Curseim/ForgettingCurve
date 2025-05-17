@@ -28,21 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CalenderContainerDesignOnly = new ForgettingCurve.Control.Calender.CalenderContainer();
             this.DateLabel = new System.Windows.Forms.Label();
             this.DebugButton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.CalenderContainerDesignOnly = new ForgettingCurve.Control.Calender.CalenderContainer();
             this.SuspendLayout();
-            // 
-            // CalenderContainerDesignOnly
-            // 
-            this.CalenderContainerDesignOnly.Enabled = false;
-            this.CalenderContainerDesignOnly.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.CalenderContainerDesignOnly.Location = new System.Drawing.Point(50, 50);
-            this.CalenderContainerDesignOnly.Name = "CalenderContainerDesignOnly";
-            this.CalenderContainerDesignOnly.Size = new System.Drawing.Size(1134, 168);
-            this.CalenderContainerDesignOnly.TabIndex = 0;
-            this.CalenderContainerDesignOnly.TabStop = false;
-            this.CalenderContainerDesignOnly.Visible = false;
             // 
             // DateLabel
             // 
@@ -63,10 +53,30 @@
             this.DebugButton.UseVisualStyleBackColor = true;
             this.DebugButton.Click += new System.EventHandler(this.DebugButton_Click);
             // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(50, 350);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(1150, 877);
+            this.flowLayoutPanel.TabIndex = 3;
+            // 
+            // CalenderContainerDesignOnly
+            // 
+            this.CalenderContainerDesignOnly.Enabled = false;
+            this.CalenderContainerDesignOnly.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.CalenderContainerDesignOnly.Location = new System.Drawing.Point(50, 50);
+            this.CalenderContainerDesignOnly.Name = "CalenderContainerDesignOnly";
+            this.CalenderContainerDesignOnly.Size = new System.Drawing.Size(1134, 168);
+            this.CalenderContainerDesignOnly.TabIndex = 0;
+            this.CalenderContainerDesignOnly.TabStop = false;
+            this.CalenderContainerDesignOnly.Visible = false;
+            // 
             // CalenderControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.DebugButton);
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.CalenderContainerDesignOnly);
@@ -82,5 +92,6 @@
         private CalenderContainer CalenderContainerDesignOnly;
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.Button DebugButton;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
     }
 }

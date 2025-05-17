@@ -48,6 +48,16 @@ namespace ForgettingCurve.Control.Calender
         private void Key_Event(object sender, Key_EventArgs e)
         {
             DateLabel.Text = DateTime.ParseExact(e.Key, DataEntryModel.KEY_FORMAT, CultureInfo.InvariantCulture).ToString("yyyy년 M월 d일");
+
+            flowLayoutPanel.Controls.Clear();
+
+            List<DataEntryModel> _entries = _repo.Search(x => DateTime.ParseExact(x.Key, DataEntryModel.KEY_FORMAT, CultureInfo.InvariantCulture).Date == DateTime.ParseExact(e.Key, DataEntryModel.KEY_FORMAT, CultureInfo.InvariantCulture).Date);
+            foreach (DataEntryModel _entry in _entries)
+            {
+                Button _button = new Button();
+                _button.Text = _entry.Title;
+                flowLayoutPanel.Controls.Add(_button);
+            }
         }
 
         private void DebugButton_Click(object sender, EventArgs e)
@@ -60,6 +70,7 @@ namespace ForgettingCurve.Control.Calender
         private void DataModified(object sender, FileDataModified_Event e)
         {
             _calenderContainer.AddContributionCount(e.DateTime, e.ChangedCount);
+            _repo = new DataRepository(_dirPath + "\\" + _fileName + ".Json");
         }
     }
 }
