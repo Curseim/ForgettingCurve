@@ -9,7 +9,6 @@ namespace ForgettingCurve {
 
 
         TextEditor_Form textEditor = new TextEditor_Form();
-        FileEditor fileEditor = new FileEditor();
         CalenderControl calenderControl = new CalenderControl();
 
         public MainForm() {

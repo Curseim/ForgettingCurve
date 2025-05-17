@@ -1,5 +1,4 @@
 ﻿using ForgettingCurve.Control.FileEditor.Tab;
-using NuGet.Commands;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
