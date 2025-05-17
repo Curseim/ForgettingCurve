@@ -114,11 +114,13 @@
       <HintPath>packages\System.Collections.Immutable.9.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Pipelines, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.Pipelines.9.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -144,6 +146,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -161,6 +164,30 @@
     </Compile>
     <Compile Include="Control\ContributionsCalender\ContributionsCalender.Designer.cs">
       <DependentUpon>ContributionsCalender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FileEditor\Tab\Control_Design.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\FileEditor\Tab\Control_Design.Designer.cs">
+      <DependentUpon>Control_Design.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FileEditor\Tab\Control_Edit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\FileEditor\Tab\Control_Edit.Designer.cs">
+      <DependentUpon>Control_Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FileEditor\Tab\Control_File.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\FileEditor\Tab\Control_File.Designer.cs">
+      <DependentUpon>Control_File.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FileEditor\Tab\Control_View.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\FileEditor\Tab\Control_View.Designer.cs">
+      <DependentUpon>Control_View.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\FileEditor\TextEditor.cs">
       <SubType>Form</SubType>
@@ -190,6 +217,18 @@
     </Compile>
     <EmbeddedResource Include="Control\ContributionsCalender\ContributionsCalender.resx">
       <DependentUpon>ContributionsCalender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\FileEditor\Tab\Control_Design.resx">
+      <DependentUpon>Control_Design.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\FileEditor\Tab\Control_Edit.resx">
+      <DependentUpon>Control_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\FileEditor\Tab\Control_File.resx">
+      <DependentUpon>Control_File.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\FileEditor\Tab\Control_View.resx">
+      <DependentUpon>Control_View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\FileEditor\TextEditor.resx">
       <DependentUpon>TextEditor.cs</DependentUpon>
