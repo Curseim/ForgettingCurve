@@ -21,7 +21,7 @@ namespace ForgettingCurve
                 SetProcessDPIAware();
             }
             #if TEST
-                Application.Run(new TextEditor_Form());
+                Application.Run(new TestForm());
             #else
                 Application.Run(new MainForm());
             #endif

@@ -1,4 +1,7 @@
-﻿namespace ForgettingCurve.Test
+﻿using ForgettingCurve.Control;
+using System.Drawing;
+
+namespace ForgettingCurve.Test
 {
     partial class TestForm
     {
@@ -28,6 +31,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // TestForm
@@ -42,5 +47,6 @@
         }
 
         #endregion
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

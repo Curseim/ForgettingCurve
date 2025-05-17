@@ -1,6 +1,9 @@
-﻿namespace ForgettingCurve.Control
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace ForgettingCurve.Control
 {
-    partial class ContributionsCalender
+    partial class DateButton
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -28,17 +31,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // ContributionsCalender
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.Name = "ContributionsCalender";
-            this.Size = new System.Drawing.Size(100, 100);
-            this.ResumeLayout(false);
+            components = new System.ComponentModel.Container();
+            //    this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 
+            this.Size = new Size(20, 20);
+            this.FlatStyle = FlatStyle.Popup;
+            this.FlatAppearance.BorderSize = 0;
+            this.UseVisualStyleBackColor = false;
+            this.Margin = new Padding(1);
+            this.Padding = new Padding(1);
+            INIT_COLOR = BackColor;
         }
 
         #endregion
