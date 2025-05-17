@@ -57,6 +57,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ReadDataByDateTimeButton = new System.Windows.Forms.Button();
             this.ModifyDataByDateTimeButton = new System.Windows.Forms.Button();
+            this.DeleteDataByDateTimeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.HourNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinuteNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondNumericUpDown)).BeginInit();
@@ -340,11 +341,22 @@
             this.ModifyDataByDateTimeButton.UseVisualStyleBackColor = true;
             this.ModifyDataByDateTimeButton.Click += new System.EventHandler(this.ModifyDataByDateTimeButton_Click);
             // 
+            // DeleteDataByDateTimeButton
+            // 
+            this.DeleteDataByDateTimeButton.Location = new System.Drawing.Point(970, 994);
+            this.DeleteDataByDateTimeButton.Name = "DeleteDataByDateTimeButton";
+            this.DeleteDataByDateTimeButton.Size = new System.Drawing.Size(171, 64);
+            this.DeleteDataByDateTimeButton.TabIndex = 29;
+            this.DeleteDataByDateTimeButton.Text = "해당 경로,날짜\r\n데이터 삭제";
+            this.DeleteDataByDateTimeButton.UseVisualStyleBackColor = true;
+            this.DeleteDataByDateTimeButton.Click += new System.EventHandler(this.DeleteDataByDateTimeButton_Click);
+            // 
             // DataDebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1153, 1095);
+            this.Controls.Add(this.DeleteDataByDateTimeButton);
             this.Controls.Add(this.ModifyDataByDateTimeButton);
             this.Controls.Add(this.ReadDataByDateTimeButton);
             this.Controls.Add(this.ForgCurveScalarTextBox);
@@ -412,5 +424,6 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button ReadDataByDateTimeButton;
         private System.Windows.Forms.Button ModifyDataByDateTimeButton;
+        private System.Windows.Forms.Button DeleteDataByDateTimeButton;
     }
 }

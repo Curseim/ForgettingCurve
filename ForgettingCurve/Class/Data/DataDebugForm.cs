@@ -15,6 +15,8 @@ namespace ForgettingCurve.Class.Data
     {
         private string _path;
 
+        public EventHandler<FileDataModified_Event> FileDataModified;
+
         public DataDebugForm()
         {
             InitializeComponent();
@@ -53,42 +55,16 @@ namespace ForgettingCurve.Class.Data
 
         private void AddFileDataButton_Click(object sender, EventArgs e)
         {
-            DateTime _dateTime = dateTimePicker.Value.Date;
+            DateTime _dateTime = GetAssembledDateTime();
 
 
 
 
-            if (Decimal.TryParse(ForgCurveScalarTextBox.Text, out decimal value))
-            {
-                if (!(0 <= value && value <= 100))
-                {
-                    MessageBox.Show(
-                        ForgCurvScalarLabel.Text + " - 0 이상 100 이하 입력",
-                        ForgCurvScalarLabel.Text,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
-
-            }
-            else
-            {
-                MessageBox.Show(
-                    ForgCurvScalarLabel.Text + " - 실수만 입력",
-                    ForgCurvScalarLabel.Text,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+            if (!IsValidEntry())
                 return;
-            }
 
 
 
-
-            _dateTime =
-                _dateTime
-                    .AddHours((double)HourNumericUpDown.Value)
-                    .AddMinutes((double)MinuteNumericUpDown.Value)
-                    .AddSeconds((double)SecondNumericUpDown.Value);
 
             DataEntryModel _data = new DataEntryModel()
             {
@@ -109,6 +85,8 @@ namespace ForgettingCurve.Class.Data
             ContentTextBox.Text = "";
             SecondNumericUpDown.Value++;
             SecondNumericUpDown_ValueChanged(sender, e);
+
+            FileDataModified?.Invoke(this, new FileDataModified_Event(_dateTime, 1));
         }
 
         private void HourNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -178,13 +156,7 @@ namespace ForgettingCurve.Class.Data
 
         private void ReadDataByDateTimeButton_Click(object sender, EventArgs e)
         {
-            DateTime _dateTime = dateTimePicker.Value.Date;
-
-            _dateTime =
-                _dateTime
-                    .AddHours((double)HourNumericUpDown.Value)
-                    .AddMinutes((double)MinuteNumericUpDown.Value)
-                    .AddSeconds((double)SecondNumericUpDown.Value);
+            DateTime _dateTime = GetAssembledDateTime();
 
             DataRepository _repo = new DataRepository(_path);
             List<DataEntryModel> _dataEntries = _repo.Search(x => x.Key == _dateTime.ToString(DataEntryModel.KEY_FORMAT));
@@ -211,18 +183,14 @@ namespace ForgettingCurve.Class.Data
 
         private void ModifyDataByDateTimeButton_Click(object sender, EventArgs e)
         {
-            DateTime _dateTime = dateTimePicker.Value.Date;
-
-            _dateTime =
-                _dateTime
-                    .AddHours((double)HourNumericUpDown.Value)
-                    .AddMinutes((double)MinuteNumericUpDown.Value)
-                    .AddSeconds((double)SecondNumericUpDown.Value);
+            DateTime _dateTime = GetAssembledDateTime();
 
             DataRepository _repo = new DataRepository(_path);
             List<DataEntryModel> _dataEntries = _repo.Search(x => x.Key == _dateTime.ToString(DataEntryModel.KEY_FORMAT));
             DataEntryModel _dataEntry;
 
+            if (!IsValidEntry())
+                return;
 
             if (_dataEntries.Count < 1)
             {
@@ -249,5 +217,76 @@ namespace ForgettingCurve.Class.Data
             _repo.Modify(x => x.Key == _dataEntry.Key, _dataEntry);
             _repo.Save();
         }
+
+        private void DeleteDataByDateTimeButton_Click(object sender, EventArgs e)
+        {
+            DateTime _dateTime = GetAssembledDateTime();
+
+            DataRepository _repo = new DataRepository(_path);
+            List<DataEntryModel> _dataEntries = _repo.Search(x => x.Key == _dateTime.ToString(DataEntryModel.KEY_FORMAT));
+
+            if ( _dataEntries.Count < 1 )
+            {
+                MessageBox.Show(
+                    "찾지 못함",
+                    "",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+
+            _repo.Delete(x => x.Key == _dateTime.ToString(DataEntryModel.KEY_FORMAT));
+            _repo.Save();
+
+            FileDataModified?.Invoke(this, new FileDataModified_Event(_dateTime, -1));
+        }
+
+        private DateTime GetAssembledDateTime()
+        {
+            DateTime _dateTime = dateTimePicker.Value.Date;
+
+            _dateTime =
+                _dateTime
+                    .AddHours((double)HourNumericUpDown.Value)
+                    .AddMinutes((double)MinuteNumericUpDown.Value)
+                    .AddSeconds((double)SecondNumericUpDown.Value);
+
+            return _dateTime;
+        }
+
+        private bool IsValidEntry()
+        {
+            if (Decimal.TryParse(ForgCurveScalarTextBox.Text, out decimal value))
+            {
+                if (!(0 <= value && value <= 100))
+                {
+                    MessageBox.Show(
+                        ForgCurvScalarLabel.Text + " - 0 이상 100 이하 입력",
+                        ForgCurvScalarLabel.Text,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return false;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show(
+                    ForgCurvScalarLabel.Text + " - 실수만 입력",
+                    ForgCurvScalarLabel.Text,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    public class FileDataModified_Event : EventArgs
+    {
+        public DateTime DateTime { get; }
+        public int ChangedCount { get; }
+        public FileDataModified_Event(DateTime p_dateTime, int p_changedCount = 0) { DateTime = p_dateTime; ChangedCount = p_changedCount; }
     }
 }

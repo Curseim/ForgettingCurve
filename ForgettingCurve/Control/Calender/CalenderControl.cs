@@ -52,7 +52,14 @@ namespace ForgettingCurve.Control.Calender
 
         private void DebugButton_Click(object sender, EventArgs e)
         {
-            new DataDebugForm(_dirPath, _fileName).ShowDialog();
+            DataDebugForm _dataDebugForm = new DataDebugForm(_dirPath, _fileName);
+            _dataDebugForm.FileDataModified += DataModified;
+            _dataDebugForm.Show();
+        }
+
+        private void DataModified(object sender, FileDataModified_Event e)
+        {
+            _calenderContainer.AddContributionCount(e.DateTime, e.ChangedCount);
         }
     }
 }
