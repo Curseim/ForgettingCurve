@@ -55,11 +55,13 @@
             // 
             // flowLayoutPanel
             // 
+            this.flowLayoutPanel.AutoScroll = true;
             this.flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel.Location = new System.Drawing.Point(50, 350);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(1150, 877);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(850, 569);
             this.flowLayoutPanel.TabIndex = 3;
+            this.flowLayoutPanel.WrapContents = false;
             // 
             // CalenderContainerDesignOnly
             // 
@@ -81,7 +83,7 @@
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.CalenderContainerDesignOnly);
             this.Name = "CalenderControl";
-            this.Size = new System.Drawing.Size(1253, 1275);
+            this.Size = new System.Drawing.Size(1253, 966);
             this.ResumeLayout(false);
             this.PerformLayout();
 

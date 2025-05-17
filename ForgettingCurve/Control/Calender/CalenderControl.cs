@@ -54,10 +54,17 @@ namespace ForgettingCurve.Control.Calender
             List<DataEntryModel> _entries = _repo.Search(x => DateTime.ParseExact(x.Key, DataEntryModel.KEY_FORMAT, CultureInfo.InvariantCulture).Date == DateTime.ParseExact(e.Key, DataEntryModel.KEY_FORMAT, CultureInfo.InvariantCulture).Date);
             foreach (DataEntryModel _entry in _entries)
             {
-                Button _button = new Button();
-                _button.Text = _entry.Title;
-                flowLayoutPanel.Controls.Add(_button);
+                EntryBox _entryBox = new EntryBox(DateTime.ParseExact(_entry.Key, DataEntryModel.KEY_FORMAT, CultureInfo.InvariantCulture), _entry.Title);
+                flowLayoutPanel.Controls.Add(_entryBox);
+                _entryBox.EntryBoxOnClick += EntryBox_Click;
             }
+        }
+
+        private void EntryBox_Click(object sender, EntryBox_Click_EventArgs e)
+        {
+            DataDebugForm _dataDebugForm = new DataDebugForm(_dirPath, _fileName, e.DateTime);
+            _dataDebugForm.FileDataModified += DataModified;
+            _dataDebugForm.Show();
         }
 
         private void DebugButton_Click(object sender, EventArgs e)

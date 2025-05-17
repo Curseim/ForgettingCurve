@@ -15,7 +15,7 @@ namespace ForgettingCurve.Class.Data
     {
         private string _path;
 
-        public EventHandler<FileDataModified_Event> FileDataModified;
+        public event EventHandler<FileDataModified_Event> FileDataModified;
 
         public DataDebugForm()
         {
@@ -26,6 +26,11 @@ namespace ForgettingCurve.Class.Data
         {
             InitializeComponent();
             Init(p_dirPath, p_fileName);
+        }
+        public DataDebugForm(string p_dirPath, string p_fileName, DateTime p_dateTime)
+        {
+            InitializeComponent();
+            Init(p_dirPath, p_fileName, p_dateTime);
         }
 
         private void Init(string p_dirPath, string p_fileName)
@@ -45,6 +50,25 @@ namespace ForgettingCurve.Class.Data
 
             if (TimeBindingCheckBox.Checked)
                 SecondTimer.Start();
+        }
+        private void Init(string p_dirPath, string p_fileName, DateTime p_dateTime)
+        {
+            DirPathTextBox.Text = p_dirPath;
+            FileNameTextBox.Text = p_fileName;
+            FileFormetComboBox.Text = ".Json";
+            _path = p_dirPath + "\\" + p_fileName + FileFormetComboBox.Text;
+            FilePathLabel.Text = "설정 경로 및 이름 >> " + _path;
+
+            TimeBindingCheckBox.Checked = false;
+            if (SecondTimer.Enabled)
+                SecondTimer.Stop();
+
+            dateTimePicker.Value = p_dateTime;
+            HourNumericUpDown.Value = p_dateTime.Hour;
+            MinuteNumericUpDown.Value = p_dateTime.Minute;
+            SecondNumericUpDown.Value = p_dateTime.Second;
+
+            ReadEntry(p_dateTime);
         }
 
         private void SetFilePathButton_Click(object sender, EventArgs e)
@@ -156,29 +180,7 @@ namespace ForgettingCurve.Class.Data
 
         private void ReadDataByDateTimeButton_Click(object sender, EventArgs e)
         {
-            DateTime _dateTime = GetAssembledDateTime();
-
-            DataRepository _repo = new DataRepository(_path);
-            List<DataEntryModel> _dataEntries = _repo.Search(x => x.Key == _dateTime.ToString(DataEntryModel.KEY_FORMAT));
-            DataEntryModel _dataEntry;
-
-            if (_dataEntries.Count < 1)
-            {
-                MessageBox.Show(
-                    "찾지 못함",
-                    "",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                return;
-            }
-            else
-                _dataEntry = _dataEntries[0];
-
-            ForgCurvLevelComboBox.Text = _dataEntry.ForgCurvLevel.ToString();
-            ForgCurveScalarTextBox.Text = _dataEntry.ForgCurvScalar.ToString();
-            RememberRatioNumericUpDown.Value = (decimal)_dataEntry.RemembrRatio;
-            TitleTextBox.Text = _dataEntry.Title;
-            ContentTextBox.Text = _dataEntry.Contents;
+            ReadEntry();
         }
 
         private void ModifyDataByDateTimeButton_Click(object sender, EventArgs e)
@@ -216,6 +218,8 @@ namespace ForgettingCurve.Class.Data
 
             _repo.Modify(x => x.Key == _dataEntry.Key, _dataEntry);
             _repo.Save();
+
+            FileDataModified?.Invoke(this, new FileDataModified_Event(_dateTime, 0));
         }
 
         private void DeleteDataByDateTimeButton_Click(object sender, EventArgs e)
@@ -239,6 +243,36 @@ namespace ForgettingCurve.Class.Data
             _repo.Save();
 
             FileDataModified?.Invoke(this, new FileDataModified_Event(_dateTime, -1));
+        }
+
+        private void ReadEntry()
+        {
+            DateTime _dateTime = GetAssembledDateTime();
+            ReadEntry(_dateTime);
+        }
+        private void ReadEntry(DateTime p_dateTime)
+        {
+            DataRepository _repo = new DataRepository(_path);
+            List<DataEntryModel> _dataEntries = _repo.Search(x => x.Key == p_dateTime.ToString(DataEntryModel.KEY_FORMAT));
+            DataEntryModel _dataEntry;
+
+            if (_dataEntries.Count < 1)
+            {
+                MessageBox.Show(
+                    "찾지 못함",
+                    "",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+            else
+                _dataEntry = _dataEntries[0];
+
+            ForgCurvLevelComboBox.Text = _dataEntry.ForgCurvLevel.ToString();
+            ForgCurveScalarTextBox.Text = _dataEntry.ForgCurvScalar.ToString();
+            RememberRatioNumericUpDown.Value = (decimal)_dataEntry.RemembrRatio;
+            TitleTextBox.Text = _dataEntry.Title;
+            ContentTextBox.Text = _dataEntry.Contents;
         }
 
         private DateTime GetAssembledDateTime()
