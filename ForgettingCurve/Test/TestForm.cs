@@ -9,6 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;      // json
+using Newtonsoft.Json.Linq; // json
+using System.IO;            // 파일 관련
+using ForgettingCurve.Class.Data;
 
 namespace ForgettingCurve.Test
 {
