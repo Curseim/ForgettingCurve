@@ -18,23 +18,16 @@ namespace ForgettingCurve.Test
 {
     public partial class TestForm : Form
     {
-
-        ContributionsCalender _contributionsCalender;
-
+        private CalenderControl _calenderControl;
 
         public TestForm()
         {
             InitializeComponent();
 
-            CalenderContainer _calenderContainer = new CalenderContainer();
-            this.Controls.Add(_calenderContainer);
-            _calenderContainer.KeyEvent += KeyEvent;
+            this.Controls.Add(_calenderControl = new CalenderControl());
+            _calenderControl.Location = new Point(50,50);
         }
 
-        private void KeyEvent(object sender, Key_EventArgs e)
-        {
-            labelDebug.Text = e.Key.ToString();
-        }
     }
 }
 

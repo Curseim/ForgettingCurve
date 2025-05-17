@@ -62,6 +62,12 @@
     <Compile Include="Control\Calender\CalenderContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Control\Calender\CalenderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Calender\CalenderControl.Designer.cs">
+      <DependentUpon>CalenderControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\Calender\ContributionsCalender\ContributionsCalender.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </Compile>
     <EmbeddedResource Include="Control\Calender\CalenderContainer.resx">
       <DependentUpon>CalenderContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\Calender\CalenderControl.resx">
+      <DependentUpon>CalenderControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\Calender\ContributionsCalender\ContributionsCalender.resx">
       <DependentUpon>ContributionsCalender.cs</DependentUpon>

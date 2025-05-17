@@ -31,13 +31,13 @@ namespace ForgettingCurve.Control.Calender
         {
             DateTime _dateTime = DateTime.Now;
 
-            this.Size = new Size(2000, 1000);
-            this.Location = new Point(200, 200);
-
             _contributionsCalender = new ContributionsCalender(_dateTime.Year);
             _contributionsCalender.InnerDateButtonClick += Ctrl_DateClick;
             _contributionsCalender.InnerDateButtonMouseEnter += Ctrl_MouseEnter;
             this.Controls.Add(_contributionsCalender);
+
+            this.Size = new Size(_contributionsCalender.Size.Width, _contributionsCalender.Size.Height);
+            this.Location = new Point(0, 0);
         }
 
         private void Ctrl_DateClick(object sender, InnerDateButton_Click_EventArgs e)
@@ -48,6 +48,11 @@ namespace ForgettingCurve.Control.Calender
         private void Ctrl_MouseEnter(object sender, InnerDateButton_MouseEnter_EventArgs e)
         {
             toolTip1.SetToolTip(sender as DateButton, e.DateTime.Date.ToString(DateButton.DATE_KEY_FORMAT));
+        }
+
+        public void AddContributionCount(DateTime p_dateTime, int p_count = 1)
+        {
+            _contributionsCalender.AddContributionCount(p_dateTime, p_count);
         }
     }
 
