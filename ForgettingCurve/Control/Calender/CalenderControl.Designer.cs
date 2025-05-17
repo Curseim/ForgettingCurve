@@ -31,7 +31,6 @@
             this.DateLabel = new System.Windows.Forms.Label();
             this.DebugButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.CalenderContainerDesignOnly = new ForgettingCurve.Control.Calender.CalenderContainer();
             this.SuspendLayout();
             // 
             // DateLabel
@@ -63,17 +62,6 @@
             this.flowLayoutPanel.TabIndex = 3;
             this.flowLayoutPanel.WrapContents = false;
             // 
-            // CalenderContainerDesignOnly
-            // 
-            this.CalenderContainerDesignOnly.Enabled = false;
-            this.CalenderContainerDesignOnly.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.CalenderContainerDesignOnly.Location = new System.Drawing.Point(50, 50);
-            this.CalenderContainerDesignOnly.Name = "CalenderContainerDesignOnly";
-            this.CalenderContainerDesignOnly.Size = new System.Drawing.Size(1134, 168);
-            this.CalenderContainerDesignOnly.TabIndex = 0;
-            this.CalenderContainerDesignOnly.TabStop = false;
-            this.CalenderContainerDesignOnly.Visible = false;
-            // 
             // CalenderControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -81,7 +69,6 @@
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.DebugButton);
             this.Controls.Add(this.DateLabel);
-            this.Controls.Add(this.CalenderContainerDesignOnly);
             this.Name = "CalenderControl";
             this.Size = new System.Drawing.Size(1253, 966);
             this.ResumeLayout(false);
@@ -90,8 +77,6 @@
         }
 
         #endregion
-
-        private CalenderContainer CalenderContainerDesignOnly;
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.Button DebugButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;

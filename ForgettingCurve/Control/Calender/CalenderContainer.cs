@@ -17,7 +17,10 @@ namespace ForgettingCurve.Control.Calender
         public event EventHandler<Key_EventArgs> KeyEvent;
 
         private ContributionsCalender _contributionsCalender;
+        private List<ContributionsCalender> ContributionsCalenderList;
 
+        private int YearMax;
+        private int YearMin;
 
 
 
@@ -30,13 +33,20 @@ namespace ForgettingCurve.Control.Calender
         private void init()
         {
             DateTime _dateTime = DateTime.Now;
+            YearMax = _dateTime.Year;
+            YearMin = _dateTime.Year;
 
             _contributionsCalender = new ContributionsCalender(_dateTime.Year);
+            ContributionsCalenderList = new List<ContributionsCalender>();
+            ContributionsCalenderList.Insert(0, _contributionsCalender);
             _contributionsCalender.InnerDateButtonClick += Ctrl_DateClick;
             _contributionsCalender.InnerDateButtonMouseEnter += Ctrl_MouseEnter;
-            this.Controls.Add(_contributionsCalender);
 
-            this.Size = new Size(_contributionsCalender.Size.Width, _contributionsCalender.Size.Height);
+
+            CalenderflowLayoutPanel.Controls.Add(_contributionsCalender);
+            CalenderflowLayoutPanel.Size = new Size(_contributionsCalender.Width + 50, _contributionsCalender.Height + 60);
+
+            this.Size = CalenderflowLayoutPanel.Size;
             this.Location = new Point(0, 0);
         }
 
@@ -52,7 +62,40 @@ namespace ForgettingCurve.Control.Calender
 
         public void AddContributionCount(DateTime p_dateTime, int p_count = 1)
         {
-            _contributionsCalender.AddContributionCount(p_dateTime, p_count);
+            if (YearMin <= p_dateTime.Year && p_dateTime.Year <= YearMax)
+            {
+                GetContributionsCalender(p_dateTime.Year).AddContributionCount(p_dateTime, p_count);
+                return;
+            }
+
+
+            while (p_dateTime.Year < YearMin)
+            {
+                ContributionsCalender _calender = new ContributionsCalender(--YearMin);
+                ContributionsCalenderList.Insert(0, _calender);
+                _calender.InnerDateButtonClick += Ctrl_DateClick;
+                _calender.InnerDateButtonMouseEnter += Ctrl_MouseEnter;
+                CalenderflowLayoutPanel.Controls.Add(_calender);
+                CalenderflowLayoutPanel.Controls.SetChildIndex(_calender, 0);
+            }
+
+            while (p_dateTime.Year > YearMax)
+            {
+                ContributionsCalender _calender = new ContributionsCalender(++YearMax);
+                ContributionsCalenderList.Add(_calender);
+                _calender.InnerDateButtonClick += Ctrl_DateClick;
+                _calender.InnerDateButtonMouseEnter += Ctrl_MouseEnter;
+                CalenderflowLayoutPanel.Controls.Add(_calender);
+            }
+
+            GetContributionsCalender(p_dateTime.Year).AddContributionCount(p_dateTime, p_count);
+        }
+
+        private ContributionsCalender GetContributionsCalender(int p_year)
+        {
+            foreach (ContributionsCalender i in ContributionsCalenderList)
+                if (i.DateTime.Year == p_year) return i;
+            return null;
         }
     }
 

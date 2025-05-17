@@ -30,12 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.CalenderflowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
+            // 
+            // CalenderflowLayoutPanel
+            // 
+            this.CalenderflowLayoutPanel.AutoScroll = true;
+            this.CalenderflowLayoutPanel.Location = new System.Drawing.Point(18, 24);
+            this.CalenderflowLayoutPanel.Name = "CalenderflowLayoutPanel";
+            this.CalenderflowLayoutPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CalenderflowLayoutPanel.Size = new System.Drawing.Size(1082, 200);
+            this.CalenderflowLayoutPanel.TabIndex = 0;
+            this.CalenderflowLayoutPanel.WrapContents = false;
             // 
             // CalenderContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CalenderflowLayoutPanel);
             this.Name = "CalenderContainer";
             this.ResumeLayout(false);
 
@@ -44,5 +56,6 @@
         #endregion
 
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.FlowLayoutPanel CalenderflowLayoutPanel;
     }
 }
