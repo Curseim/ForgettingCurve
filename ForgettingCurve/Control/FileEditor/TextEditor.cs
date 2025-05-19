@@ -1,23 +1,19 @@
 ﻿using ForgettingCurve.Control.FileEditor.Tab;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 
 namespace ForgettingCurve.Control.FileEditor {
     public partial class TextEditor_Form : Form {
         public TextEditor_Form() {
             InitializeComponent();
+            // 윈도우 폼에 그림자를 추가하는 코드
+            (new Core.DropShadow()).ApplyShadows(this);
         }
 
         #region ◆ 윈도우 dll 선언 부분 (Sub 부분)
+
         /* Form의 설정 중 FormBorderStyle(폼 테두리 스타일)을 None(없음)으로 설정 시 폼의 테두리가 없어져서
          * 드래그를 통해 폼의 위치를 옮길 수가 없는데 윈도우의 내장 dll파일을 이용하여 테두리가 없어도
          * 폼의 아무 부분을 클릭하고 드래그하면 이동 시킬 수 있는 형식으로 만들기 위해
@@ -34,7 +30,6 @@ namespace ForgettingCurve.Control.FileEditor {
             ReleaseCapture();
             SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
         }
-
         #endregion
 
         #region ◆ 외부 코드 접근 영역
@@ -70,7 +65,7 @@ namespace ForgettingCurve.Control.FileEditor {
         private bool normalSize = true;
 
         private void close_button_Click(object sender, EventArgs e) {
-            this.Close();
+            this.Hide();
         }
 
         private void windows_button_Click(object sender, EventArgs e) {

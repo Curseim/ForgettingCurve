@@ -38,19 +38,24 @@
             this.file_Text = new System.Windows.Forms.Label();
             this.share_Button = new System.Windows.Forms.Button();
             this.FileOpen_Button = new System.Windows.Forms.Button();
-            this.close_Button = new System.Windows.Forms.Button();
             this.setting_Button = new System.Windows.Forms.Button();
+            this.windows_panel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.hide_button = new System.Windows.Forms.Button();
+            this.windows_Button = new System.Windows.Forms.Button();
+            this.close_Button = new System.Windows.Forms.Button();
             this.Panel.SuspendLayout();
+            this.windows_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // main_Logo
             // 
             this.main_Logo.AutoSize = true;
-            this.main_Logo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.main_Logo.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main_Logo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.main_Logo.Location = new System.Drawing.Point(31, 60);
+            this.main_Logo.Location = new System.Drawing.Point(37, 100);
             this.main_Logo.Name = "main_Logo";
-            this.main_Logo.Size = new System.Drawing.Size(363, 37);
+            this.main_Logo.Size = new System.Drawing.Size(333, 45);
             this.main_Logo.TabIndex = 12;
             this.main_Logo.Text = "FORGETTING CURVE";
             // 
@@ -61,7 +66,7 @@
             this.user_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.user_Button.Font = new System.Drawing.Font("굴림", 8F);
             this.user_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.user_Button.Location = new System.Drawing.Point(1744, 52);
+            this.user_Button.Location = new System.Drawing.Point(1740, 96);
             this.user_Button.Name = "user_Button";
             this.user_Button.Size = new System.Drawing.Size(50, 50);
             this.user_Button.TabIndex = 12;
@@ -83,10 +88,10 @@
             this.Panel.Controls.Add(this.share_Button);
             this.Panel.Controls.Add(this.FileOpen_Button);
             this.Panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Panel.Location = new System.Drawing.Point(0, 118);
+            this.Panel.Location = new System.Drawing.Point(0, 163);
             this.Panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Panel.Name = "Panel";
-            this.Panel.Size = new System.Drawing.Size(1806, 942);
+            this.Panel.Size = new System.Drawing.Size(1806, 897);
             this.Panel.TabIndex = 0;
             // 
             // recentFile_Text
@@ -105,7 +110,7 @@
             // 
             this.calender_Button.FlatAppearance.BorderSize = 0;
             this.calender_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.calender_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.calender_Button.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.calender_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.calender_Button.Location = new System.Drawing.Point(33, 280);
             this.calender_Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -122,7 +127,7 @@
             // 
             this.home_Button.FlatAppearance.BorderSize = 0;
             this.home_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.home_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.home_Button.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.home_Button.Image = global::ForgettingCurve.Properties.Resources.Home_Icon;
             this.home_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.home_Button.Location = new System.Drawing.Point(33, 148);
@@ -134,6 +139,7 @@
             this.home_Button.Text = "        HOME";
             this.home_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.home_Button.UseVisualStyleBackColor = true;
+            this.home_Button.Click += new System.EventHandler(this.home_Button_Click);
             // 
             // normal_Text
             // 
@@ -161,7 +167,7 @@
             // 
             this.trashBin_Button.FlatAppearance.BorderSize = 0;
             this.trashBin_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.trashBin_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.trashBin_Button.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.trashBin_Button.Image = global::ForgettingCurve.Properties.Resources.Trash;
             this.trashBin_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.trashBin_Button.Location = new System.Drawing.Point(33, 496);
@@ -178,7 +184,7 @@
             // 
             this.newFile_Button.FlatAppearance.BorderSize = 0;
             this.newFile_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.newFile_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.newFile_Button.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.newFile_Button.Image = global::ForgettingCurve.Properties.Resources.Icon;
             this.newFile_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.newFile_Button.Location = new System.Drawing.Point(33, 334);
@@ -220,7 +226,7 @@
             // 
             this.share_Button.FlatAppearance.BorderSize = 0;
             this.share_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.share_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.share_Button.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.share_Button.Image = global::ForgettingCurve.Properties.Resources.Share;
             this.share_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.share_Button.Location = new System.Drawing.Point(33, 442);
@@ -237,7 +243,7 @@
             // 
             this.FileOpen_Button.FlatAppearance.BorderSize = 0;
             this.FileOpen_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FileOpen_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.FileOpen_Button.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FileOpen_Button.Image = ((System.Drawing.Image)(resources.GetObject("FileOpen_Button.Image")));
             this.FileOpen_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.FileOpen_Button.Location = new System.Drawing.Point(33, 388);
@@ -250,22 +256,6 @@
             this.FileOpen_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.FileOpen_Button.UseVisualStyleBackColor = true;
             // 
-            // close_Button
-            // 
-            this.close_Button.FlatAppearance.BorderSize = 0;
-            this.close_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.close_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
-            this.close_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.close_Button.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.close_Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.close_Button.Location = new System.Drawing.Point(1734, 0);
-            this.close_Button.Name = "close_Button";
-            this.close_Button.Size = new System.Drawing.Size(71, 38);
-            this.close_Button.TabIndex = 15;
-            this.close_Button.Text = "X";
-            this.close_Button.UseVisualStyleBackColor = true;
-            this.close_Button.Click += new System.EventHandler(this.close_Button_Click);
-            // 
             // setting_Button
             // 
             this.setting_Button.BackColor = System.Drawing.Color.Silver;
@@ -273,12 +263,91 @@
             this.setting_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.setting_Button.Font = new System.Drawing.Font("굴림", 8F);
             this.setting_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.setting_Button.Location = new System.Drawing.Point(1689, 52);
+            this.setting_Button.Location = new System.Drawing.Point(1684, 96);
             this.setting_Button.Name = "setting_Button";
             this.setting_Button.Size = new System.Drawing.Size(50, 50);
             this.setting_Button.TabIndex = 16;
             this.setting_Button.Text = "설정";
             this.setting_Button.UseVisualStyleBackColor = false;
+            // 
+            // windows_panel
+            // 
+            this.windows_panel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.windows_panel.Controls.Add(this.label1);
+            this.windows_panel.Controls.Add(this.hide_button);
+            this.windows_panel.Controls.Add(this.windows_Button);
+            this.windows_panel.Controls.Add(this.close_Button);
+            this.windows_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.windows_panel.Location = new System.Drawing.Point(0, 0);
+            this.windows_panel.Margin = new System.Windows.Forms.Padding(0);
+            this.windows_panel.Name = "windows_panel";
+            this.windows_panel.Size = new System.Drawing.Size(1806, 69);
+            this.windows_panel.TabIndex = 17;
+            this.windows_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.windows_panel_MouseDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(19, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 31);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "망각 곡선";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // hide_button
+            // 
+            this.hide_button.Dock = System.Windows.Forms.DockStyle.Right;
+            this.hide_button.FlatAppearance.BorderSize = 0;
+            this.hide_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.hide_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hide_button.Font = new System.Drawing.Font("Webdings", 12F);
+            this.hide_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.hide_button.Location = new System.Drawing.Point(1593, 0);
+            this.hide_button.Margin = new System.Windows.Forms.Padding(0);
+            this.hide_button.Name = "hide_button";
+            this.hide_button.Size = new System.Drawing.Size(71, 69);
+            this.hide_button.TabIndex = 2;
+            this.hide_button.Text = "0";
+            this.hide_button.UseVisualStyleBackColor = true;
+            this.hide_button.Click += new System.EventHandler(this.hide_button_Click);
+            // 
+            // windows_Button
+            // 
+            this.windows_Button.Dock = System.Windows.Forms.DockStyle.Right;
+            this.windows_Button.FlatAppearance.BorderSize = 0;
+            this.windows_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.windows_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.windows_Button.Font = new System.Drawing.Font("Webdings", 12F);
+            this.windows_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.windows_Button.Location = new System.Drawing.Point(1664, 0);
+            this.windows_Button.Margin = new System.Windows.Forms.Padding(0);
+            this.windows_Button.Name = "windows_Button";
+            this.windows_Button.Size = new System.Drawing.Size(71, 69);
+            this.windows_Button.TabIndex = 1;
+            this.windows_Button.Text = "1";
+            this.windows_Button.UseVisualStyleBackColor = true;
+            this.windows_Button.Click += new System.EventHandler(this.windows_Button_Click);
+            // 
+            // close_Button
+            // 
+            this.close_Button.Dock = System.Windows.Forms.DockStyle.Right;
+            this.close_Button.FlatAppearance.BorderSize = 0;
+            this.close_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.close_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.close_Button.Font = new System.Drawing.Font("Webdings", 12F);
+            this.close_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.close_Button.Location = new System.Drawing.Point(1735, 0);
+            this.close_Button.Margin = new System.Windows.Forms.Padding(0);
+            this.close_Button.Name = "close_Button";
+            this.close_Button.Size = new System.Drawing.Size(71, 69);
+            this.close_Button.TabIndex = 0;
+            this.close_Button.Text = "r";
+            this.close_Button.UseVisualStyleBackColor = true;
+            this.close_Button.Click += new System.EventHandler(this.close_Button_Click);
             // 
             // MainForm
             // 
@@ -287,8 +356,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1806, 1060);
+            this.Controls.Add(this.windows_panel);
             this.Controls.Add(this.setting_Button);
-            this.Controls.Add(this.close_Button);
             this.Controls.Add(this.Panel);
             this.Controls.Add(this.user_Button);
             this.Controls.Add(this.main_Logo);
@@ -299,6 +368,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Panel.ResumeLayout(false);
             this.Panel.PerformLayout();
+            this.windows_panel.ResumeLayout(false);
+            this.windows_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,7 +391,11 @@
         private System.Windows.Forms.Button FileOpen_Button;
         private System.Windows.Forms.Label recentFile_Text;
         private System.Windows.Forms.Panel recentFIle_Panel;
-        private System.Windows.Forms.Button close_Button;
         private System.Windows.Forms.Button setting_Button;
+        private System.Windows.Forms.Panel windows_panel;
+        private System.Windows.Forms.Button hide_button;
+        private System.Windows.Forms.Button windows_Button;
+        private System.Windows.Forms.Button close_Button;
+        private System.Windows.Forms.Label label1;
     }
 }
