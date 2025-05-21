@@ -32,10 +32,13 @@ namespace ForgettingCurve {
 
         public MainForm() {
             InitializeComponent();
+            // 윈도우 폼에 그림자를 추가하는 코드
+            (new Core.DropShadow()).ApplyShadows(this);
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
-
+            this.Controls.Add(calenderControl);
+            calenderControl.Visible = false;
         }
 
         private void newFile_Button_Click(object sender, EventArgs e) {
@@ -46,12 +49,11 @@ namespace ForgettingCurve {
 
         private void calender_Button_Click(object sender, EventArgs e)
         {
+            calenderControl.Visible = true;
             recentFile_Text.Visible = false;
             recentFIle_Panel.Visible = false;
-            if (!calenderControl.IsDisposed)
-                calenderControl.Dispose();
-            calenderControl = new CalenderControl();
-            this.Controls.Add(calenderControl);
+            //if (!calenderControl.IsDisposed)
+            //    calenderControl.Dispose();
             calenderControl.Location = new Point(300, 200);
             calenderControl.BringToFront();
         }
@@ -83,6 +85,11 @@ namespace ForgettingCurve {
 
         #endregion
 
-        
+        private void home_Button_Click(object sender, EventArgs e) {
+            calenderControl.Visible = false;
+            recentFile_Text.Visible = true;
+            recentFIle_Panel.Visible = true;
+        }
+
     }
 }

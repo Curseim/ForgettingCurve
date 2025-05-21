@@ -35,19 +35,19 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 13;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 3F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 242F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 346F));
             this.tableLayoutPanel1.Controls.Add(this.tool_newFIle, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tool_fileOpen, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.tool_saveFile, 3, 1);
@@ -57,10 +57,10 @@
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(895, 97);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1279, 146);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // tool_newFIle
@@ -72,14 +72,15 @@
             this.tool_newFIle.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.tool_newFIle.Image = ((System.Drawing.Image)(resources.GetObject("tool_newFIle.Image")));
             this.tool_newFIle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tool_newFIle.Location = new System.Drawing.Point(4, 4);
-            this.tool_newFIle.Margin = new System.Windows.Forms.Padding(1);
+            this.tool_newFIle.Location = new System.Drawing.Point(5, 6);
+            this.tool_newFIle.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.tool_newFIle.Name = "tool_newFIle";
-            this.tool_newFIle.Size = new System.Drawing.Size(68, 68);
+            this.tool_newFIle.Size = new System.Drawing.Size(98, 101);
             this.tool_newFIle.TabIndex = 0;
             this.tool_newFIle.Text = "새로 제작";
             this.tool_newFIle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tool_newFIle.UseVisualStyleBackColor = false;
+            this.tool_newFIle.Click += new System.EventHandler(this.tool_newFIle_Click);
             // 
             // tool_fileOpen
             // 
@@ -90,31 +91,34 @@
             this.tool_fileOpen.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.tool_fileOpen.Image = ((System.Drawing.Image)(resources.GetObject("tool_fileOpen.Image")));
             this.tool_fileOpen.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tool_fileOpen.Location = new System.Drawing.Point(74, 4);
-            this.tool_fileOpen.Margin = new System.Windows.Forms.Padding(1);
+            this.tool_fileOpen.Location = new System.Drawing.Point(105, 6);
+            this.tool_fileOpen.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.tool_fileOpen.Name = "tool_fileOpen";
-            this.tool_fileOpen.Size = new System.Drawing.Size(68, 68);
+            this.tool_fileOpen.Size = new System.Drawing.Size(98, 101);
             this.tool_fileOpen.TabIndex = 1;
             this.tool_fileOpen.Text = "열기";
             this.tool_fileOpen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tool_fileOpen.UseVisualStyleBackColor = false;
+            this.tool_fileOpen.Click += new System.EventHandler(this.tool_fileOpen_Click);
             // 
             // tool_saveFile
             // 
             this.tool_saveFile.BackColor = System.Drawing.SystemColors.Control;
+            this.tool_saveFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tool_saveFile.FlatAppearance.BorderSize = 0;
             this.tool_saveFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tool_saveFile.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.tool_saveFile.Image = ((System.Drawing.Image)(resources.GetObject("tool_saveFile.Image")));
             this.tool_saveFile.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tool_saveFile.Location = new System.Drawing.Point(144, 4);
-            this.tool_saveFile.Margin = new System.Windows.Forms.Padding(1);
+            this.tool_saveFile.Location = new System.Drawing.Point(205, 6);
+            this.tool_saveFile.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.tool_saveFile.Name = "tool_saveFile";
-            this.tool_saveFile.Size = new System.Drawing.Size(68, 68);
+            this.tool_saveFile.Size = new System.Drawing.Size(98, 101);
             this.tool_saveFile.TabIndex = 2;
             this.tool_saveFile.Text = "저장";
             this.tool_saveFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tool_saveFile.UseVisualStyleBackColor = false;
+            this.tool_saveFile.Click += new System.EventHandler(this.tool_saveFile_Click);
             // 
             // label1
             // 
@@ -122,21 +126,22 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(73, 73);
+            this.label1.Location = new System.Drawing.Point(104, 109);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 24);
+            this.label1.Size = new System.Drawing.Size(100, 37);
             this.label1.TabIndex = 3;
             this.label1.Text = "파일 관리";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Control_File
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Control_File";
-            this.Size = new System.Drawing.Size(895, 97);
+            this.Size = new System.Drawing.Size(1279, 146);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
