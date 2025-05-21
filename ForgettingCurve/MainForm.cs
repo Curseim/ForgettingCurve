@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Windows.Media.Animation;
 
 namespace ForgettingCurve {
     public partial class MainForm : Form {
@@ -82,7 +83,6 @@ namespace ForgettingCurve {
             this.WindowState = FormWindowState.Minimized;
         }
 
-
         #endregion
 
         private void home_Button_Click(object sender, EventArgs e) {
@@ -90,5 +90,6 @@ namespace ForgettingCurve {
             recentFile_Text.Visible = true;
             recentFIle_Panel.Visible = true;
         }
+
     }
 }

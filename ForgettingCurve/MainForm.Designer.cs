@@ -1,4 +1,4 @@
-﻿namespace ForgettingCurve {
+namespace ForgettingCurve {
     partial class MainForm {
         /// <summary>
         /// Required designer variable.
